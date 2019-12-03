@@ -1,9 +1,11 @@
 from docx import Document
 
-def write_docx(filename):
+def write_docx(filename, trans):
+    _ = trans.gettext
+
     document = Document()
 
-    document.add_heading('Document Title', 0)
+    document.add_heading(_('Document Title'), 0)
 
     p = document.add_paragraph('A plain paragraph having some ')
     p.add_run('bold').bold = True
