@@ -5,7 +5,7 @@ version = '0.1'
 setup(
     name='depress',
     version=version,
-    description="Data Element Profile docx generator"
+    description="Data Element Profile docx generator",
     long_description="""
     Generate a Data Element Profile docx file based on a ckanext-recombinant
     schema. A Data Element Profile docx file is easier for users to
@@ -23,6 +23,12 @@ setup(
     zip_safe=False,
     install_requires=[
         'python-docx',
+        'click',
+        'requests',
     ],
     python_requires='>3.6',
+    entry_points='''
+        [console_scripts]
+        depress=depress.cli:cli
+    ''',
 )
