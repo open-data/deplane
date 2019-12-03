@@ -1,10 +1,10 @@
 depress
 =======
 
-Generate a Data Element Profile docx file based on ckanext-recombinant
-definition. A Data Element Profile docx file is easier for users to
+Generate a Data Element Profile docx file based on a ckanext-recombinant
+schema. A Data Element Profile docx file is easier for users to
 understand, share and edit than the ckanext-recombinant JSON/YAML
-files that it represents.
+schema and choice files that it represents.
 
 Usage
 -----
