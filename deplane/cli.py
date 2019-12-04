@@ -6,6 +6,7 @@ import requests
 
 from deplane.publish import write_docx
 
+
 @click.command()
 @click.argument('lang')
 @click.argument('url')
@@ -17,5 +18,5 @@ def cli(lang, url, filename):
         languages=[lang],
     )
     trans.install()
-    geno = requests.get(url)
-    write_docx(filename, trans)
+    geno = requests.get(url).json()
+    write_docx(geno, filename, trans, lang)

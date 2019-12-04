@@ -1,11 +1,24 @@
+# noinspection PyPackageRequirements
 from docx import Document
 
-def write_docx(filename, trans):
+
+def write_docx(schema, filename, trans, lang):
     _ = trans.gettext
 
     document = Document()
+    section = document.sections[0]
 
-    document.add_heading(_('Document Title'), 0)
+    title = schema['title'][lang]
+
+    section.different_first_page_header_footer = True
+    section.first_page_header.paragraphs[0].text = _(
+        'Centralized Publishing System for Proactive Disclosure'
+    )
+    section.header.paragraphs[0].text = _('Template Guide: {title}').format(title=title)
+    document.add_heading(_('Data Element Profile: {title}').format(title=title), 0)
+    document.add_paragraph(_('Open Government Team'))
+    document.add_page_break()
+
 
     p = document.add_paragraph('A plain paragraph having some ')
     p.add_run('bold').bold = True
