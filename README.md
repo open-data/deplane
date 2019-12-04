@@ -1,3 +1,5 @@
+<img alt="skydiver" src="8-parachute-skydiver-silhouette-5.png" align="right" />
+
 deplane
 =======
 
