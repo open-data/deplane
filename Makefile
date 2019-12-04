@@ -1,6 +1,6 @@
 compile-mo:
-	msgfmt -o depress/i18n/fr/LC_MESSAGES/depress.mo depress/i18n/fr/LC_MESSAGES/depress.po
+	msgfmt -o deplane/i18n/fr/LC_MESSAGES/deplane.mo deplane/i18n/fr/LC_MESSAGES/deplane.po
 
 extract-strings:
-	pygettext3 -d depress -o depress/i18n/depress.pot depress
+	pygettext3 -d deplane -o deplane/i18n/deplane.pot deplane
 

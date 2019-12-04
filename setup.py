@@ -3,7 +3,7 @@ from setuptools import setup
 version = '0.1'
 
 setup(
-    name='depress',
+    name='deplane',
     version=version,
     description="Data Element Profile docx generator",
     long_description="""
@@ -18,7 +18,7 @@ setup(
     author_email='Ian.Ward@tbs-sct.gc.ca',
     url='',
     license='MIT',
-    packages=['depress'],
+    packages=['deplane'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
@@ -29,6 +29,6 @@ setup(
     python_requires='>3.6',
     entry_points='''
         [console_scripts]
-        depress=depress.cli:cli
+        deplane=deplane.cli:cli
     ''',
 )

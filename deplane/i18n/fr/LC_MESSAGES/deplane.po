@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: depress/publish.py:8
+#: deplane/publish.py:8
 msgid "Document Title"
 msgstr "Titre"
 

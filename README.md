@@ -1,4 +1,4 @@
-depress
+deplane
 =======
 
 Generate a Data Element Profile docx file based on a ckanext-recombinant
@@ -10,10 +10,10 @@ Usage
 -----
 
 ```
-$ depress <lang> <url> <filename>
+$ deplane <lang> <url> <filename>
 ```
 
 e.g.
 ```
-$ depress fr https://open.canada.ca/data/recombinant-schema/consultations.json consultations-fr.docx
+$ deplane fr https://open.canada.ca/data/recombinant-schema/consultations.json consultations-fr.docx
 ```
