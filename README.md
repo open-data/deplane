@@ -3,7 +3,8 @@
 deplane
 =======
 
-Generate a Data Element Profile docx file based on a ckanext-recombinant
+Generate a Data Element Profile docx file based on a
+[ckanext-recombinant](https://github.com/open-data/ckanext-recombinant)
 schema. A Data Element Profile docx file is easier for users to
 understand, share and edit than the ckanext-recombinant JSON/YAML
 schema and choice files that it represents.
