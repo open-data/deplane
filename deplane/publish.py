@@ -1,6 +1,8 @@
 # noinspection PyPackageRequirements
 from docx import Document
 from docx.shared import Cm
+from docx.oxml import parse_xml
+from docx.oxml.ns import nsdecls
 
 from deplane.md_to_docx import insert_markdown
 
@@ -109,7 +111,12 @@ CODE2 | English Description 2 | French Description 2''')
         ),
     )
 
-    set_column_widths(table, Cm(4.69), Cm(11.80))
+    format_table(
+        table,
+        widths=[Cm(4.69), Cm(11.80)],
+        top_color='d9d9d9',
+        left_color='c6d9f1',
+    )
 
     p = document.add_paragraph('A plain paragraph having some ')
     p.add_run('bold').bold = True
@@ -132,7 +139,7 @@ CODE2 | English Description 2 | French Description 2''')
     document.save(filename)
 
 
-def set_column_widths(table, *widths):
+def format_table(table, widths, top_color=None, left_color=None):
     # for Word
     for row in table.rows:
         for i, w in enumerate(widths):
@@ -140,3 +147,12 @@ def set_column_widths(table, *widths):
     # for Libreoffice
     for i, w in enumerate(widths):
         table.columns[i].width = w
+
+    if left_color:
+        for cell in table.columns[0].cells:
+            element = parse_xml(r'<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), left_color))
+            cell._tc.get_or_add_tcPr().append(element)
+    if top_color:
+        for cell in table.rows[0].cells:
+            element = parse_xml(r'<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), top_color))
+            cell._tc.get_or_add_tcPr().append(element)
