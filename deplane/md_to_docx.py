@@ -16,4 +16,10 @@ def insert_markdown(document, markdown):
         elif element.tag == 'h3':
             document.add_heading(element.text, 3)
         elif element.tag == 'p':
-            document.add_paragraph(element.text)
+            if element.text.strip():
+                document.add_paragraph(element.text.strip())
+        elif element.tag == 'ul':
+            for li in element:
+                document.add_paragraph(li.text, style='List Paragraph')
+        else:
+            assert 0, element.tag

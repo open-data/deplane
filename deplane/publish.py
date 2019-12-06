@@ -1,3 +1,5 @@
+from pathlib import Path
+
 # noinspection PyPackageRequirements
 from docx import Document
 from docx.shared import Cm
@@ -10,24 +12,26 @@ from deplane.md_to_docx import insert_markdown
 def write_docx(schema, filename, trans, lang):
     _ = trans.gettext
 
-    document = Document()
+    document = Document(Path(__file__).parent / 'ENG_2_Colour.docx')
     section = document.sections[0]
 
     title = schema['title'][lang]
 
     section.different_first_page_header_footer = True
-    section.first_page_header.paragraphs[0].text = _(
-        'Centralized Publishing System for Proactive Disclosure'
-    )
+    section.first_page_header.paragraphs[0].text = ''
     section.header.paragraphs[0].text = _('Template Guide: {title}').format(title=title)
     section.top_margin = Cm(1.27)
     section.bottom_margin = Cm(1.27)
     section.left_margin = Cm(2.54)
     section.right_margin = Cm(2.54)
 
-    document.add_heading(_('Data Element Profile:\n{title}').format(title=title), 0)
-    document.add_paragraph(_('Open Government Team'))
-    document.add_page_break()
+    # replace existing "TITLE" / "Subtitle" text
+    document.paragraphs[0].runs[0].font.size = Cm(1.2) # template title too large
+    document.paragraphs[0].runs[0].text = '\n\n\n' + _('Data Element Profile')
+    document.paragraphs[0].runs[2].text = '\n' + title
+    # clear out the rest of the example text
+    for para in reversed(document.paragraphs[2:]):
+        delete_paragraph(para)
 
     document.add_heading(_('Legend'), 1)
     document.add_paragraph(_(
@@ -124,14 +128,6 @@ CODE2 | English Description 2 | French Description 2''')
     p.add_run('italic.').italic = True
 
     document.add_heading('Heading, level 1', level=1)
-    document.add_paragraph('Intense quote', style='Intense Quote')
-
-    document.add_paragraph(
-        'first item in unordered list', style='List Bullet'
-    )
-    document.add_paragraph(
-        'first item in ordered list', style='List Number'
-    )
 
 
     document.add_page_break()
@@ -156,3 +152,9 @@ def format_table(table, widths, top_color=None, left_color=None):
         for cell in table.rows[0].cells:
             element = parse_xml(r'<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), top_color))
             cell._tc.get_or_add_tcPr().append(element)
+
+
+def delete_paragraph(para):
+    p = para._element
+    p.getparent().remove(p)
+    p._p = p._element = None
