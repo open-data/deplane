@@ -3,10 +3,8 @@ from pathlib import Path
 # noinspection PyPackageRequirements
 from docx import Document
 from docx.shared import Cm
-from docx.oxml import parse_xml
-from docx.oxml.ns import nsdecls
 
-from deplane.md_to_docx import insert_markdown
+from deplane.md_to_docx import insert_markdown, format_table
 
 
 def write_docx(schema, filename, trans, lang):
@@ -131,25 +129,6 @@ CODE2 | English Description 2 | French Description 2''')
     document.add_page_break()
 
     document.save(filename)
-
-
-def format_table(table, widths, top_color=None, left_color=None):
-    # for Word
-    for row in table.rows:
-        for i, w in enumerate(widths):
-            row.cells[i].width = w
-    # for Libreoffice
-    for i, w in enumerate(widths):
-        table.columns[i].width = w
-
-    if left_color:
-        for cell in table.columns[0].cells:
-            element = parse_xml(r'<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), left_color))
-            cell._tc.get_or_add_tcPr().append(element)
-    if top_color:
-        for cell in table.rows[0].cells:
-            element = parse_xml(r'<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), top_color))
-            cell._tc.get_or_add_tcPr().append(element)
 
 
 def delete_paragraph(para):
