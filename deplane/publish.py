@@ -18,7 +18,12 @@ def write_docx(schema, filename, trans, lang):
         'Centralized Publishing System for Proactive Disclosure'
     )
     section.header.paragraphs[0].text = _('Template Guide: {title}').format(title=title)
-    document.add_heading(_('Data Element Profile: {title}').format(title=title), 0)
+    section.top_margin = Cm(1.27)
+    section.bottom_margin = Cm(1.27)
+    section.left_margin = Cm(2.54)
+    section.right_margin = Cm(2.54)
+
+    document.add_heading(_('Data Element Profile:\n{title}').format(title=title), 0)
     document.add_paragraph(_('Open Government Team'))
     document.add_page_break()
 
