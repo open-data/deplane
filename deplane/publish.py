@@ -20,15 +20,11 @@ def write_docx(schema, filename, trans, lang):
     section.different_first_page_header_footer = True
     section.first_page_header.paragraphs[0].text = ''
     section.header.paragraphs[0].text = _('Template Guide: {title}').format(title=title)
-    section.top_margin = Cm(1.27)
-    section.bottom_margin = Cm(1.27)
-    section.left_margin = Cm(2.54)
-    section.right_margin = Cm(2.54)
 
     # replace existing "TITLE" / "Subtitle" text
     document.paragraphs[0].runs[0].font.size = Cm(1.2) # template title too large
-    document.paragraphs[0].runs[0].text = '\n\n\n' + _('Data Element Profile')
-    document.paragraphs[0].runs[2].text = '\n' + title
+    document.paragraphs[0].runs[0].text = _('Data Element Profile')
+    document.paragraphs[0].runs[2].text = title
     # clear out the rest of the example text
     for para in reversed(document.paragraphs[2:]):
         delete_paragraph(para)
