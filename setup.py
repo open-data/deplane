@@ -25,6 +25,8 @@ setup(
         'python-docx',
         'click',
         'requests',
+        'lxml',
+        'markdown',
     ],
     python_requires='>3.6',
     entry_points='''

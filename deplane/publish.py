@@ -1,5 +1,8 @@
 # noinspection PyPackageRequirements
 from docx import Document
+from docx.shared import Cm
+
+from deplane.md_to_docx import insert_markdown
 
 
 def write_docx(schema, filename, trans, lang):
@@ -26,6 +29,7 @@ def write_docx(schema, filename, trans, lang):
     ))
 
     table = document.add_table(rows=0, cols=2)
+    table.autofit = False
     def trow(att, desc):
         cells = table.add_row().cells
         cells[0].text = att
@@ -50,38 +54,57 @@ def write_docx(schema, filename, trans, lang):
     )
     cells = table.add_row().cells
     cells[0].text = _('Obligation')
-    cells[1].text = _(
-        'Indicates whether the element is required to always or sometimes be present '
-        '(i.e., contain a value). Options are:'
+    insert_markdown(
+        cells[1],
+        _('''
+Indicates whether the element is required to always or sometimes be present 
+(i.e., contain a value). Options are:
+
+- Mandatory
+- Mandatory, conditional
+- Optional'''),
     )
-    cells[1].add_paragraph(_('Mandatory'), style='List Bullet')
-    cells[1].add_paragraph(_('Mandatory, conditional'), style='List Bullet')
-    cells[1].add_paragraph(_('Optional'), style='List Bullet')
-    '''
-Condition
-Describes the condition or conditions according to which a value shall be present
-Format Type
-Indicates the required format of the values, if any, at the file level.  “Free text” indicates that the value may be input using natural language (i.e., there is no constraint) while “single choice” or “multiple choice” indicates the values are restricted to a controlled list.
+    trow(
+        _('Condition'),
+        _('Describes the condition or conditions according to which a value shall be present'),
+    )
+    cells = table.add_row().cells
+    cells[0].text = _('Format Type')
+    insert_markdown(
+        cells[1],
+        _('''
+Indicates the required format of the values, if any, at the file level.
+“Free text” indicates that the value may be input using natural language
+(i.e., there is no constraint) while “single choice” or “multiple choice”
+indicates the values are restricted to a controlled list.)
 
 Controlled List Values:
-Code
-English
-French
-CODE1
-English Description 1
-French Description 1
-CODE2
-English Description 2
-French Description 2
 
-Validation
-Indicates what the system will accept in this field
-Validation Errors
-This section indicates when an error has been made. It will detail the error and provide instruction on how to correct it.
-Example Value
-Provide one or more real examples of the values that may appear, e.g. “CODE1” or “Family Services Reform Program”
-    5.0 Fields
-    '''
+Code | English | French
+--- | --- | ---
+CODE1 | English Description 1 | French Description 1
+CODE2 | English Description 2 | French Description 2''')
+    )
+    trow(
+        _('Validation'),
+        _('Indicates what the system will accept in this field'),
+    )
+    trow(
+        _('Validation Errors'),
+        _(
+            'This section indicates when an error has been made. '
+            'It will detail the error and provide instruction on how to correct it.'
+        ),
+    )
+    trow(
+        _('Example Value'),
+        _(
+            'Provide one or more real examples of the values that may appear, '
+            'e.g. “CODE1” or “Family Services Reform Program”'
+        ),
+    )
+
+    set_column_widths(table, Cm(4.69), Cm(11.80))
 
     p = document.add_paragraph('A plain paragraph having some ')
     p.add_run('bold').bold = True
@@ -102,3 +125,13 @@ Provide one or more real examples of the values that may appear, e.g. “CODE1�
     document.add_page_break()
 
     document.save(filename)
+
+
+def set_column_widths(table, *widths):
+    # for Word
+    for row in table.rows:
+        for i, w in enumerate(widths):
+            row.cells[i].width = w
+    # for Libreoffice
+    for i, w in enumerate(widths):
+        table.columns[i].width = w
