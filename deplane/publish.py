@@ -65,6 +65,7 @@ def write_docx(schema, filename, trans, lang):
     )
     cells = table.add_row().cells
     cells[0].text = _('Obligation')
+    delete_paragraph(cells[1].paragraphs[0])
     insert_markdown(
         cells[1],
         _('''
@@ -81,6 +82,7 @@ Indicates whether the element is required to always or sometimes be present
     )
     cells = table.add_row().cells
     cells[0].text = _('Format Type')
+    delete_paragraph(cells[1].paragraphs[0])
     insert_markdown(
         cells[1],
         _('''
