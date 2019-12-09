@@ -17,7 +17,7 @@ def write_docx(schema, filename, trans, lang):
 
     section.different_first_page_header_footer = True
     section.first_page_header.paragraphs[0].text = ''
-    section.header.paragraphs[0].text = _('Template Guide: {title}').format(title=title)
+    section.header.paragraphs[0].text = _('Data Element Profile') + ' : ' + title
 
     # replace existing "TITLE" / "Subtitle" text
     document.paragraphs[0].runs[0].font.size = Cm(1.2) # template title too large
@@ -26,6 +26,14 @@ def write_docx(schema, filename, trans, lang):
     # clear out the rest of the example text
     for para in reversed(document.paragraphs[2:]):
         delete_paragraph(para)
+
+    document.add_heading(_('Overview'), 1)
+    document.add_paragraph(_(
+        'The purpose of this document is to provide supplemental information that is '
+        'not provided in the Centralized Contract Publishing System: Training Guide. '
+        'It will provide information to users on data elements within the Quarterly '
+        'Contracts template.'
+    ))
 
     document.add_heading(_('Legend'), 1)
     document.add_paragraph(_(
