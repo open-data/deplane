@@ -26,7 +26,7 @@ def insert_markdown(document, markdown):
                 document.add_paragraph(element.text.strip())
         elif element.tag == 'ul':
             for li in element:
-                document.add_paragraph(li.text, style='List Paragraph')
+                document.add_paragraph(li.text, style='List Bullet')
         elif element.tag == 'table':
             thead = element[0]
             table = document.add_table(rows=0, cols=len(thead[0]))
