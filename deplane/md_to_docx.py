@@ -21,17 +21,16 @@ def insert_markdown(document, markdown):
             document.add_heading(element.text, 2)
         elif element.tag == 'h3':
             document.add_heading(element.text, 3)
+
         elif element.tag == 'p':
             p = document.add_paragraph(element.text.strip())
-            for sub in element:
-                if sub.tag == 'em':
-                    p.add_run(sub.text).italic = True
-                if sub.tail:
-                    p.add_run(sub.tail)
+            finish_paragraph(p, element)
 
         elif element.tag == 'ul':
             for li in element:
-                document.add_paragraph(li.text, style='List Bullet')
+                p = document.add_paragraph(li.text, style='List Bullet')
+                finish_paragraph(p, element)
+
         elif element.tag == 'table':
             thead = element[0]
             table = document.add_table(rows=0, cols=len(thead[0]))
@@ -68,3 +67,18 @@ def format_table(table, widths=None, top_color=None, left_color=None):
         for cell in table.rows[0].cells:
             element = parse_xml(r'<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), top_color))
             cell._tc.get_or_add_tcPr().append(element)
+
+
+def finish_paragraph(p, element):
+    """
+    add children of element as runs at the end of p, best effort
+    """
+    for sub in element:
+        if sub.tag == 'em':
+            p.add_run(sub.text).italic = True
+        elif sub.tag == 'b':
+            p.add_run(sub.text).bold = True
+        else:
+            p.add_run(sub.text)
+        if sub.tail:
+            p.add_run(sub.tail)
