@@ -3,4 +3,4 @@ compile-mo:
 
 extract-strings:
 	pygettext3 -d deplane -o deplane/i18n/deplane.pot deplane
-
+	msgmerge --update deplane/i18n/fr/LC_MESSAGES/deplane.po deplane/i18n/deplane.pot

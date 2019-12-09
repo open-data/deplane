@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-03 17:40-0500\n"
+"POT-Creation-Date: 2019-12-09 14:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,126 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: deplane/publish.py:8
-msgid "Document Title"
+#: deplane/publish.py:20
+msgid "Template Guide: {title}"
+msgstr ""
+
+#: deplane/publish.py:24
+msgid "Data Element Profile"
+msgstr ""
+
+#: deplane/publish.py:30
+msgid "Legend"
+msgstr ""
+
+#: deplane/publish.py:31
+msgid "The following sample table provides a description of each field you will see for all contract elements:"
+msgstr ""
+
+#: deplane/publish.py:43
+msgid "Attribute"
+msgstr ""
+
+#: deplane/publish.py:43
+msgid "Attribute Description"
+msgstr ""
+
+#: deplane/publish.py:45
+msgid "Field Name EN"
+msgstr ""
+
+#: deplane/publish.py:46
+msgid "This text should correspond directly with the field name in your template in English"
+msgstr ""
+
+#: deplane/publish.py:49
+msgid "Field Name FR"
+msgstr ""
+
+#: deplane/publish.py:50
+msgid "This text should correspond directly with the field name in your template in French"
+msgstr ""
+
+#: deplane/publish.py:53
+msgid "Description EN"
+msgstr ""
+
+#: deplane/publish.py:54
+msgid "This provides a brief description of the element in English"
+msgstr ""
+
+#: deplane/publish.py:57
+msgid "Description FR"
+msgstr ""
+
+#: deplane/publish.py:58
+msgid "This provides a brief description of the element in French"
+msgstr ""
+
+#: deplane/publish.py:61
+msgid "Obligation"
+msgstr ""
+
+#: deplane/publish.py:65
+msgid ""
+"\n"
+"Indicates whether the element is required to always or sometimes be present \n"
+"(i.e., contain a value). Options are:\n"
+"\n"
+"- Mandatory\n"
+"- Mandatory, conditional\n"
+"- Optional"
+msgstr ""
+
+#: deplane/publish.py:74
+msgid "Condition"
+msgstr ""
+
+#: deplane/publish.py:75
+msgid "Describes the condition or conditions according to which a value shall be present"
+msgstr ""
+
+#: deplane/publish.py:78
+msgid "Format Type"
+msgstr ""
+
+#: deplane/publish.py:82
+msgid ""
+"\n"
+"Indicates the required format of the values, if any, at the file level.\n"
+"“Free text” indicates that the value may be input using natural language\n"
+"(i.e., there is no constraint) while “single choice” or “multiple choice”\n"
+"indicates the values are restricted to a controlled list.)\n"
+"\n"
+"Controlled List Values:\n"
+"\n"
+"Code | English | French\n"
+"--- | --- | ---\n"
+"CODE1 | English Description 1 | French Description 1\n"
+"CODE2 | English Description 2 | French Description 2"
+msgstr ""
+
+#: deplane/publish.py:96
+msgid "Validation"
+msgstr ""
+
+#: deplane/publish.py:97
+msgid "Indicates what the system will accept in this field"
+msgstr ""
+
+#: deplane/publish.py:100
+msgid "Validation Errors"
+msgstr ""
+
+#: deplane/publish.py:101
+msgid "This section indicates when an error has been made. It will detail the error and provide instruction on how to correct it."
+msgstr ""
+
+#: deplane/publish.py:107
+msgid "Example Value"
+msgstr ""
+
+#: deplane/publish.py:108
+msgid "Provide one or more real examples of the values that may appear, e.g. “CODE1” or “Family Services Reform Program”"
 msgstr ""
 
