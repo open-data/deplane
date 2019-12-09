@@ -22,8 +22,13 @@ def insert_markdown(document, markdown):
         elif element.tag == 'h3':
             document.add_heading(element.text, 3)
         elif element.tag == 'p':
-            if element.text.strip():
-                document.add_paragraph(element.text.strip())
+            p = document.add_paragraph(element.text.strip())
+            for sub in element:
+                if sub.tag == 'em':
+                    p.add_run(sub.text).italic = True
+                if sub.tail:
+                    p.add_run(sub.tail)
+
         elif element.tag == 'ul':
             for li in element:
                 document.add_paragraph(li.text, style='List Bullet')

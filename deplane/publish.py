@@ -28,9 +28,9 @@ def write_docx(schema, filename, trans, lang):
         delete_paragraph(para)
 
     document.add_heading(_('Overview'), 1)
-    document.add_paragraph(_(
+    insert_markdown(document, _(
         'The purpose of this document is to provide supplemental information that is '
-        'not provided in the Centralized Contract Publishing System: Training Guide. '
+        'not provided in the *Centralized Contract Publishing System: Training Guide*. '
         'It will provide information to users on data elements within the Quarterly '
         'Contracts template.'
     ))
