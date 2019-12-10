@@ -12,11 +12,14 @@ from deplane.publish import write_docx
 @click.argument('url')
 @click.argument('filename')
 def cli(lang, url, filename):
-    trans = gettext.translation(
-        'deplane',
-        Path(__file__).parent / 'i18n',
-        languages=[lang],
-    )
-    trans.install()
+    if lang == 'en':
+        trans = gettext.NullTranslations()
+    else:
+        trans = gettext.translation(
+            'deplane',
+            Path(__file__).parent / 'i18n',
+            languages=[lang],
+        )
+        trans.install()
     geno = requests.get(url).json()
     write_docx(geno, filename, trans, lang)
