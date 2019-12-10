@@ -20,7 +20,7 @@ def write_docx(schema, filename, trans, lang):
     section.header.paragraphs[0].text = _('Data Element Profile') + ' : ' + title
 
     # replace existing "TITLE" / "Subtitle" text
-    document.paragraphs[0].runs[0].font.size = Cm(1.2) # template title too large
+    document.paragraphs[0].runs[0].font.size = Cm(1.2)  # template title too large
     document.paragraphs[0].runs[0].text = _('Data Element Profile')
     document.paragraphs[0].runs[2].text = title
     # clear out the rest of the example text
@@ -34,6 +34,9 @@ def write_docx(schema, filename, trans, lang):
         'It will provide information to users on data elements within the Quarterly '
         'Contracts template.'
     ))
+
+    if schema.get('front_matter'):
+        insert_markdown(document, schema['front_matter'][lang])
 
     document.add_heading(_('Legend'), 1)
     document.add_paragraph(_(
@@ -125,16 +128,6 @@ CODE2 | English Description 2 | French Description 2''')
         top_color='d9d9d9',
         left_color='c6d9f1',
     )
-
-    p = document.add_paragraph('A plain paragraph having some ')
-    p.add_run('bold').bold = True
-    p.add_run(' and some ')
-    p.add_run('italic.').italic = True
-
-    document.add_heading('Heading, level 1', level=1)
-
-
-    document.add_page_break()
 
     document.save(filename)
 

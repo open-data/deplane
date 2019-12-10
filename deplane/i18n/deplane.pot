@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-09 16:39-0500\n"
+"POT-Creation-Date: 2019-12-10 10:38-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,62 +24,62 @@ msgid "Overview"
 msgstr ""
 
 #: deplane/publish.py:31
-msgid "The purpose of this document is to provide supplemental information that is not provided in the Centralized Contract Publishing System: Training Guide. It will provide information to users on data elements within the Quarterly Contracts template."
+msgid "The purpose of this document is to provide supplemental information that is not provided in the *Centralized Contract Publishing System: Training Guide*. It will provide information to users on data elements within the Quarterly Contracts template."
 msgstr ""
 
-#: deplane/publish.py:38
+#: deplane/publish.py:41
 msgid "Legend"
 msgstr ""
 
-#: deplane/publish.py:39
+#: deplane/publish.py:42
 msgid "The following sample table provides a description of each field you will see for all contract elements:"
 msgstr ""
 
-#: deplane/publish.py:51
+#: deplane/publish.py:54
 msgid "Attribute"
 msgstr ""
 
-#: deplane/publish.py:51
+#: deplane/publish.py:54
 msgid "Attribute Description"
 msgstr ""
 
-#: deplane/publish.py:53
+#: deplane/publish.py:56
 msgid "Field Name EN"
 msgstr ""
 
-#: deplane/publish.py:54
+#: deplane/publish.py:57
 msgid "This text should correspond directly with the field name in your template in English"
 msgstr ""
 
-#: deplane/publish.py:57
+#: deplane/publish.py:60
 msgid "Field Name FR"
 msgstr ""
 
-#: deplane/publish.py:58
+#: deplane/publish.py:61
 msgid "This text should correspond directly with the field name in your template in French"
 msgstr ""
 
-#: deplane/publish.py:61
+#: deplane/publish.py:64
 msgid "Description EN"
 msgstr ""
 
-#: deplane/publish.py:62
+#: deplane/publish.py:65
 msgid "This provides a brief description of the element in English"
 msgstr ""
 
-#: deplane/publish.py:65
+#: deplane/publish.py:68
 msgid "Description FR"
 msgstr ""
 
-#: deplane/publish.py:66
+#: deplane/publish.py:69
 msgid "This provides a brief description of the element in French"
 msgstr ""
 
-#: deplane/publish.py:69
+#: deplane/publish.py:72
 msgid "Obligation"
 msgstr ""
 
-#: deplane/publish.py:73
+#: deplane/publish.py:76
 msgid ""
 "\n"
 "Indicates whether the element is required to always or sometimes be present \n"
@@ -90,19 +90,19 @@ msgid ""
 "- Optional"
 msgstr ""
 
-#: deplane/publish.py:82
+#: deplane/publish.py:85
 msgid "Condition"
 msgstr ""
 
-#: deplane/publish.py:83
+#: deplane/publish.py:86
 msgid "Describes the condition or conditions according to which a value shall be present"
 msgstr ""
 
-#: deplane/publish.py:86
+#: deplane/publish.py:89
 msgid "Format Type"
 msgstr ""
 
-#: deplane/publish.py:90
+#: deplane/publish.py:93
 msgid ""
 "\n"
 "Indicates the required format of the values, if any, at the file level.\n"
@@ -118,27 +118,27 @@ msgid ""
 "CODE2 | English Description 2 | French Description 2"
 msgstr ""
 
-#: deplane/publish.py:104
+#: deplane/publish.py:107
 msgid "Validation"
 msgstr ""
 
-#: deplane/publish.py:105
+#: deplane/publish.py:108
 msgid "Indicates what the system will accept in this field"
 msgstr ""
 
-#: deplane/publish.py:108
+#: deplane/publish.py:111
 msgid "Validation Errors"
 msgstr ""
 
-#: deplane/publish.py:109
+#: deplane/publish.py:112
 msgid "This section indicates when an error has been made. It will detail the error and provide instruction on how to correct it."
 msgstr ""
 
-#: deplane/publish.py:115
+#: deplane/publish.py:118
 msgid "Example Value"
 msgstr ""
 
-#: deplane/publish.py:116
+#: deplane/publish.py:119
 msgid "Provide one or more real examples of the values that may appear, e.g. “CODE1” or “Family Services Reform Program”"
 msgstr ""
 
