@@ -14,6 +14,8 @@ def insert_markdown(document, markdown):
         extensions=['tables'],
     )
     root = etree.HTML(html)
+    if root is None:
+        return
 
     for element in root[0]:
         if element.tag == 'h1':

@@ -46,10 +46,20 @@ def write_docx(schema, filename, trans, lang):
 
     table = document.add_table(rows=0, cols=2)
     table.autofit = False
+
     def trow(att, desc):
+        """Add a text row to table"""
         cells = table.add_row().cells
         cells[0].text = att
         cells[1].text = desc
+
+    def mrow(att, md):
+        """Add a markdown row to table"""
+        cells = table.add_row().cells
+        cells[0].text = att
+        delete_paragraph(cells[1].paragraphs[0])
+        insert_markdown(cells[1], md)
+        return cells[1]
 
     trow(_('Attribute'), _('Attribute Description'))
     trow(
@@ -68,11 +78,8 @@ def write_docx(schema, filename, trans, lang):
         _('Description FR'),
         _('This provides a brief description of the element in French'),
     )
-    cells = table.add_row().cells
-    cells[0].text = _('Obligation')
-    delete_paragraph(cells[1].paragraphs[0])
-    insert_markdown(
-        cells[1],
+    mrow(
+        _('Obligation'),
         _('''
 Indicates whether the element is required to always or sometimes be present 
 (i.e., contain a value). Options are:
@@ -85,11 +92,8 @@ Indicates whether the element is required to always or sometimes be present
         _('Condition'),
         _('Describes the condition or conditions according to which a value shall be present'),
     )
-    cells = table.add_row().cells
-    cells[0].text = _('Format Type')
-    delete_paragraph(cells[1].paragraphs[0])
-    insert_markdown(
-        cells[1],
+    mrow(
+        _('Format Type'),
         _('''
 Indicates the required format of the values, if any, at the file level.
 “Free text” indicates that the value may be input using natural language
@@ -101,7 +105,7 @@ Controlled List Values:
 Code | English | French
 --- | --- | ---
 CODE1 | English Description 1 | French Description 1
-CODE2 | English Description 2 | French Description 2''')
+CODE2 | English Description 2 | French Description 2'''),
     )
     trow(
         _('Validation'),
@@ -128,6 +132,44 @@ CODE2 | English Description 2 | French Description 2''')
         top_color='d9d9d9',
         left_color='c6d9f1',
     )
+
+    document.add_page_break()
+
+    for rnum, res in enumerate(schema['resources'], 1):
+        document.add_heading(res['title'][lang] + '\n', 1)
+
+        for fnum, field in enumerate(res['fields'], 1):
+            document.add_heading(f'{rnum}-{fnum} {field["label"][lang]}\n', 2)
+            table = document.add_table(rows=0, cols=2)
+            table.autofit = False
+            trow(_('Attribute'), _('Attribute Description'))
+            trow(_('Field Name EN'), field['label']['en'])
+            trow(_('Field Name FR'), field['label']['fr'])
+            trow(_('ID'), field['id'])
+            mrow(_('Description EN'), field.get('description', {}).get('en', ''))
+            mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
+            trow(_('Obligation'), field.get('obligation', {}).get(lang, ''))
+            trow(_('Condition'), '')  # FIXME not recorded?
+            cell = mrow(_('Format Type'), field.get('format_type', {}).get(lang, ''))
+
+            if 'choices' in field:
+                pass
+            trow(_('Validation'), '')  # FIXME not recorded
+            trow(_('Validation Errors'), '')  # FIXME not recorded
+
+            eg = res['example_record'].get(field['id'], '')
+            if isinstance(eg, list):
+                eg = ','.join(eg)
+            trow(_('Example Value'), str(eg))
+
+            format_table(
+                table,
+                widths=[Cm(4.69), Cm(11.80)],
+                top_color='d9d9d9',
+                left_color='c6d9f1',
+            )
+            document.add_paragraph('\n\n')
+        document.add_page_break()
 
     document.save(filename)
 
