@@ -28,6 +28,7 @@ def write_docx(schema, filename, trans, lang):
         delete_paragraph(para)
 
     document.add_heading(_('Overview'), 1)
+    document.sections[-1].right_margin = Cm(2.54)  # restore right margin
     insert_markdown(document, _(
         'The purpose of this document is to provide supplemental information that is '
         'not provided in the *Centralized Contract Publishing System: Training Guide*. '
