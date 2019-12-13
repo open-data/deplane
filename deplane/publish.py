@@ -1,4 +1,5 @@
 from pathlib import Path
+from contextlib import contextmanager
 
 # noinspection PyPackageRequirements
 from docx import Document
@@ -45,94 +46,73 @@ def write_docx(schema, filename, trans, lang):
         'for all contract elements:'
     ))
 
-    table = document.add_table(rows=0, cols=2)
-    table.autofit = False
+    with build_table(
+            document,
+            [Cm(4.69), Cm(11.80)],
+            top_color='d9d9d9',
+            left_color='c6d9f1') as (trow, mrow):
 
-    def trow(att, desc):
-        """Add a text row to table"""
-        cells = table.add_row().cells
-        cells[0].text = att
-        cells[1].text = desc
-
-    def mrow(att, md):
-        """Add a markdown row to table"""
-        cells = table.add_row().cells
-        cells[0].text = att
-        delete_paragraph(cells[1].paragraphs[0])
-        insert_markdown(cells[1], md)
-        return cells[1]
-
-    trow(_('Attribute'), _('Attribute Description'))
-    trow(
-        _('Field Name EN'),
-        _('This text should correspond directly with the field name in your template in English'),
-    )
-    trow(
-        _('Field Name FR'),
-        _('This text should correspond directly with the field name in your template in French'),
-    )
-    trow(
-        _('Description EN'),
-        _('This provides a brief description of the element in English'),
-    )
-    trow(
-        _('Description FR'),
-        _('This provides a brief description of the element in French'),
-    )
-    mrow(
-        _('Obligation'),
-        _('''
+        trow(_('Attribute'), _('Attribute Description'))
+        trow(
+            _('Field Name EN'),
+            _('This text should correspond directly with the field name in your template in English'),
+        )
+        trow(
+            _('Field Name FR'),
+            _('This text should correspond directly with the field name in your template in French'),
+        )
+        trow(
+            _('Description EN'),
+            _('This provides a brief description of the element in English'),
+        )
+        trow(
+            _('Description FR'),
+            _('This provides a brief description of the element in French'),
+        )
+        mrow(
+            _('Obligation'),
+            _('''
 Indicates whether the element is required to always or sometimes be present 
 (i.e., contain a value). Options are:
 
 - Mandatory
 - Mandatory, conditional
 - Optional'''),
-    )
-    trow(
-        _('Condition'),
-        _('Describes the condition or conditions according to which a value shall be present'),
-    )
-    mrow(
-        _('Format Type'),
-        _('''
-Indicates the required format of the values, if any, at the file level.
-“Free text” indicates that the value may be input using natural language
-(i.e., there is no constraint) while “single choice” or “multiple choice”
-indicates the values are restricted to a controlled list.)
+        )
+        mrow(
+            _('Format Type'),
+            _('''
+Options are:
 
-Controlled List Values:
+- integer (e.g. page count, year or month number)
+- numeric (e.g. decimal, currency values)
+- text
+- text array (e.g. one or more codes from a controlled list)
+- date (YYYY-MM-DD)
+- timestamp (YYYY-MM-DD hh:mm:ss)''')
+        )
+        trow(
+            _('Validation'),
+            _('''
+Describes the condition or conditions according to which a value shall be present.
+Indicates what the system will accept in this field.'''),
+        )
+        trow(
+            _('Example Value'),
+            _(
+                'Provide one or more real examples of the values that may appear, '
+                'e.g. “CODE1” or “Family Services Reform Program”'
+            ),
+        )
 
-Code | English | French
---- | --- | ---
-CODE1 | English Description 1 | French Description 1
-CODE2 | English Description 2 | French Description 2'''),
-    )
-    trow(
-        _('Validation'),
-        _('Indicates what the system will accept in this field'),
-    )
-    trow(
-        _('Validation Errors'),
-        _(
-            'This section indicates when an error has been made. '
-            'It will detail the error and provide instruction on how to correct it.'
-        ),
-    )
-    trow(
-        _('Example Value'),
-        _(
-            'Provide one or more real examples of the values that may appear, '
-            'e.g. “CODE1” or “Family Services Reform Program”'
-        ),
-    )
-
-    format_table(
-        table,
-        widths=[Cm(4.69), Cm(11.80)],
-        top_color='d9d9d9',
-        left_color='c6d9f1',
-    )
+    document.add_paragraph(_('\nControlled List Values:'))
+    with build_table(
+            document,
+            [Cm(3.69), Cm(6.4), Cm(6.4)],
+            top_color='d9d9d9') as (trow, mrow):
+        trow(_('Code'), _('English'), _('French'))
+        trow('CODE1', _('English Description 1'), _('French Description 1'))
+        trow('CODE2', _('English Description 2'), _('French Description 2'))
 
     document.add_page_break()
 
@@ -141,35 +121,40 @@ CODE2 | English Description 2 | French Description 2'''),
 
         for fnum, field in enumerate(res['fields'], 1):
             document.add_heading(f'{rnum}-{fnum} {field["label"][lang]}\n', 2)
-            table = document.add_table(rows=0, cols=2)
-            table.autofit = False
-            trow(_('Attribute'), _('Attribute Description'))
-            trow(_('Field Name EN'), field['label']['en'])
-            trow(_('Field Name FR'), field['label']['fr'])
-            trow(_('ID'), field['id'])
-            mrow(_('Description EN'), field.get('description', {}).get('en', ''))
-            mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
-            trow(_('Obligation'), field.get('obligation', {}).get(lang, ''))
-            trow(_('Condition'), '')  # FIXME not recorded?
-            cell = mrow(_('Format Type'), field.get('format_type', {}).get(lang, ''))
+            with build_table(
+                    document,
+                    [Cm(4.69), Cm(11.80)],
+                    top_color='d9d9d9',
+                    left_color='c6d9f1') as (trow, mrow):
+                trow(_('Attribute'), _('Attribute Description'))
+                trow(_('Field Name EN'), field['label']['en'])
+                trow(_('Field Name FR'), field['label']['fr'])
+                trow(_('ID'), field['id'])
+                mrow(_('Description EN'), field.get('description', {}).get('en', ''))
+                mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
+                trow(_('Obligation'), field.get('obligation', {}).get(lang, ''))
+                mrow(_('Format Type'), field.get('format_type', {}).get(lang, ''))
+
+                mrow(_('Validation'), field.get('validation', {}).get(lang, ''))
+                eg = res['example_record'].get(field['id'], '')
+                if isinstance(eg, list):
+                    eg = ','.join(eg)
+                trow(_('Example Value'), str(eg))
 
             if 'choices' in field:
-                pass
-            trow(_('Validation'), '')  # FIXME not recorded
-            trow(_('Validation Errors'), '')  # FIXME not recorded
+                document.add_paragraph(_('\nControlled List Values:'))
+                with build_table(
+                        document,
+                        [Cm(3.69), Cm(6.4), Cm(6.4)],
+                        top_color='d9d9d9') as (trow, mrow):
+                    trow(_('Code'), _('English'), _('French'))
+                    for c, v in field['choices'].items():
+                        if isinstance(v, dict):
+                            trow(c, v.get('en', ''), v.get('fr', ''))
+                        else:
+                            trow(c, v, v)
 
-            eg = res['example_record'].get(field['id'], '')
-            if isinstance(eg, list):
-                eg = ','.join(eg)
-            trow(_('Example Value'), str(eg))
-
-            format_table(
-                table,
-                widths=[Cm(4.69), Cm(11.80)],
-                top_color='d9d9d9',
-                left_color='c6d9f1',
-            )
-            document.add_paragraph('\n\n')
+        document.add_paragraph('\n\n')
         document.add_page_break()
 
     document.save(filename)
@@ -179,3 +164,32 @@ def delete_paragraph(para):
     p = para._element
     p.getparent().remove(p)
     p._p = p._element = None
+
+
+@contextmanager
+def build_table(document, widths, **format_args):
+    """
+    Context manager for building a table with text rows and markdown rows
+
+    Yields (trow, mrow) functions for adding text/markdown rows to the table
+    """
+    table = document.add_table(rows=0, cols=len(widths))
+    table.autofit = False
+    def trow(first, *rest):
+        """Add a text row to table"""
+        cells = table.add_row().cells
+        cells[0].text = first
+        for i, c in enumerate(rest, 1):
+            cells[i].text = c
+
+    def mrow(first, *rest):
+        """Add a markdown row to table"""
+        cells = table.add_row().cells
+        cells[0].text = first
+        for i, c in enumerate(rest, 1):
+            delete_paragraph(cells[i].paragraphs[0])
+            insert_markdown(cells[i], c)
+
+    yield trow, mrow
+
+    format_table(table, widths=widths, **format_args)
