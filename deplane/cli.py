@@ -8,10 +8,13 @@ from deplane.publish import write_docx
 
 
 @click.command()
-@click.argument('lang')
+@click.argument('lang', type=click.Choice(['en', 'fr']))
 @click.argument('url')
-@click.argument('filename')
+@click.argument('filename', type=click.Path())
 def cli(lang, url, filename):
+    """
+    Create Data Element Profile docx based on ckanext-recombinant json schema
+    """
     if lang == 'en':
         trans = gettext.NullTranslations()
     else:
