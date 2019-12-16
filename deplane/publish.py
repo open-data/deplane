@@ -9,9 +9,8 @@ from docx.shared import Cm
 from deplane.md_to_docx import insert_markdown, format_table
 
 
-def _(x):
-    """mark translations; actual translation later when we know language"""
-    return x
+# mark translations; actual translation later when we know language"""
+_ = lambda x: x
 
 
 OBLIGATION = {  # convert required to Obligation
@@ -164,8 +163,8 @@ Indicates what the system will accept in this field.'''),
                 trow(_('ID'), field['id'])
                 mrow(_('Description EN'), field.get('description', {}).get('en', ''))
                 mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
-                trow(_('Obligation'), _(OBLIGATION[field.get('obligation')]))
-                mrow(_('Format Type'), _(FORMAT_TYPE[field['datastore_type']]))
+                trow(_('Obligation'), trans.gettext(OBLIGATION[field.get('obligation')]))
+                mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[field['datastore_type']]))
                 mrow(_('Validation'), field.get('validation', {}).get(lang, ''))
                 eg = res['example_record'].get(field['id'], '')
                 if isinstance(eg, list):
