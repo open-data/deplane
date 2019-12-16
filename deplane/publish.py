@@ -3,12 +3,44 @@ from contextlib import contextmanager
 
 # noinspection PyPackageRequirements
 from docx import Document
+# noinspection PyPackageRequirements
 from docx.shared import Cm
 
 from deplane.md_to_docx import insert_markdown, format_table
 
 
+def _(x):
+    """mark translations; actual translation later when we know language"""
+    return x
+
+
+OBLIGATION = {  # convert required to Obligation
+    'mandatory': _('Mandatory'),
+    'conditional': _('Mandatory, conditional'),
+    'optional': _('Optional'),
+}
+
+FORMAT_TYPE = {  # convert datastore_type to Format Type
+    'bigint': _('Integer'),
+    'int': _('Integer'),
+    'year': _('Integer'),
+    'month': _('Integer'),
+    'numeric': _('Numeric'),
+    'money': _('Numeric'),
+    'text': _('Text'),
+    '_text': _('Text Array'),
+    'date': _('Date'),
+    'timestamp': _('Timestamp'),
+}
+
+
 def write_docx(schema, filename, trans, lang):
+    """
+    :param schema: recombinant-schema json dict
+    :param filename: output docx filename to create
+    :param trans: gettext translation object for language selected
+    :param lang: language code selected (en/fr)
+    """
     _ = trans.gettext
 
     document = Document(Path(__file__).parent / 'ENG_2_Colour.docx')
@@ -84,12 +116,12 @@ Indicates whether the element is required to always or sometimes be present
             _('''
 Options are:
 
-- integer (e.g. page count, year or month number)
-- numeric (e.g. decimal, currency values)
-- text
-- text array (e.g. one or more codes from a controlled list)
-- date (YYYY-MM-DD)
-- timestamp (YYYY-MM-DD hh:mm:ss)''')
+- Integer (e.g. page count, year or month number)
+- Numeric (e.g. decimal, currency values)
+- Text
+- Text Array (e.g. one or more codes from a controlled list)
+- Date (YYYY-MM-DD)
+- Timestamp (YYYY-MM-DD hh:mm:ss)''')
         )
         trow(
             _('Validation'),
@@ -132,9 +164,8 @@ Indicates what the system will accept in this field.'''),
                 trow(_('ID'), field['id'])
                 mrow(_('Description EN'), field.get('description', {}).get('en', ''))
                 mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
-                trow(_('Obligation'), field.get('obligation', {}).get(lang, ''))
-                mrow(_('Format Type'), field.get('format_type', {}).get(lang, ''))
-
+                trow(_('Obligation'), _(OBLIGATION[field.get('obligation')]))
+                mrow(_('Format Type'), _(FORMAT_TYPE[field['datastore_type']]))
                 mrow(_('Validation'), field.get('validation', {}).get(lang, ''))
                 eg = res['example_record'].get(field['id'], '')
                 if isinstance(eg, list):
@@ -154,7 +185,8 @@ Indicates what the system will accept in this field.'''),
                         else:
                             trow(c, v, v)
 
-        document.add_paragraph('\n\n')
+            document.add_paragraph('\n\n')
+
         document.add_page_break()
 
     document.save(filename)
@@ -187,7 +219,8 @@ def build_table(document, widths, **format_args):
         cells = table.add_row().cells
         cells[0].text = first
         for i, c in enumerate(rest, 1):
-            delete_paragraph(cells[i].paragraphs[0])
+            if c:
+                delete_paragraph(cells[i].paragraphs[0])
             insert_markdown(cells[i], c)
 
     yield trow, mrow
