@@ -8,7 +8,7 @@ jobs:
     - checkout
     - run:
         command: |
-          pip install tests/requirements.txt
+          pip install -r tests/requirements.txt
           make compile-mo
     - run:
         command: |
