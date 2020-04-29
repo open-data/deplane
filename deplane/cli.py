@@ -17,6 +17,10 @@ def cli(lang, url, filename):
     """
     Create Data Element Profile docx based on ckanext-recombinant json schema
     """
+    cli_impl(lang, url, filename)
+
+
+def cli_impl(lang, url, filename):
     if lang == 'en':
         trans = gettext.NullTranslations()
     else:
