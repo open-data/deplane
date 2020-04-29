@@ -28,6 +28,7 @@ FORMAT_TYPE = {  # convert datastore_type to Format Type
     'money': _('Numeric'),
     'text': _('Text'),
     '_text': _('Text Array'),
+    'text array': _('Text Array'),
     'date': _('Date'),
     'timestamp': _('Timestamp'),
 }
@@ -152,6 +153,7 @@ Indicates what the system will accept in this field.'''),
 
         for fnum, field in enumerate(res['fields'], 1):
             document.add_heading(f'{rnum}-{fnum} {field["label"][lang]}\n', 2)
+            typ = field.get('type', field.get('datastore_type'))
             with build_table(
                     document,
                     [Cm(4.69), Cm(11.80)],
@@ -164,7 +166,7 @@ Indicates what the system will accept in this field.'''),
                 mrow(_('Description EN'), field.get('description', {}).get('en', ''))
                 mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
                 trow(_('Obligation'), trans.gettext(OBLIGATION[field.get('obligation')]))
-                mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[field['datastore_type']]))
+                mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
                 mrow(_('Validation'), field.get('validation', {}).get(lang, ''))
                 eg = res['example_record'].get(field['id'], '')
                 if isinstance(eg, list):

@@ -49,7 +49,7 @@ definitions:
     - id
     - label
     - description
-    - datastore_type
+    - type
     properties:
       id:
         type: string
@@ -62,19 +62,15 @@ definitions:
         "$ref": "#/definitions/en-fr-text"
       excel_required:
         type: boolean
-      datastore_type:
+      type:
         type: string
         enum:
         - text
         - int
-        - year
-        - month
         - date
-        - bigint
         - numeric
-        - money
         - boolean
-        - _text
+        - text array
         - timestamp
       choices:
         type: object

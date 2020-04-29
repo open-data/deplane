@@ -32,7 +32,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       2013-2014: 2013-2014
       2014-2015: 2014-2015
@@ -54,7 +54,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_name_en
     label:
@@ -67,7 +67,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_name_fr
     label:
@@ -80,7 +80,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: department_name_en
     label:
@@ -93,7 +93,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: department_name_fr
     label:
@@ -106,7 +106,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: external_internal
     label:
@@ -121,7 +121,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       enterprise:
         fr: Service interne intégré
@@ -146,7 +146,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       acq:
         fr: Services d’acquisition
@@ -215,7 +215,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       crit:
         fr: Service critique
@@ -241,7 +241,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_description_fr
     label:
@@ -254,7 +254,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_url_en
     label:
@@ -269,7 +269,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_url_fr
     label:
@@ -284,7 +284,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: program_name_en
     label:
@@ -297,7 +297,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: program_name_fr
     label:
@@ -310,7 +310,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: last_GBA
     label:
@@ -323,7 +323,7 @@ resources:
       en: None
       fr: None
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       2013-2014: 2013-2014
       2014-2015: 2014-2015
@@ -347,7 +347,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: _text
+    type: text array
     choices:
       NGO:
         fr: Institutions et organismes sans but lucratif
@@ -383,7 +383,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non
@@ -403,7 +403,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non
@@ -425,7 +425,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non
@@ -450,7 +450,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non
@@ -474,7 +474,7 @@ resources:
         de clients.
       en: Identifies the channels by which services are delivered to client groups.
     obligation: optional
-    datastore_type: _text
+    type: text array
     choices:
       eml:
         fr: Courriel
@@ -521,7 +521,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: web_visits_info_service
     label:
@@ -543,7 +543,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: calls_received
     label:
@@ -565,7 +565,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: in_person_applications
     label:
@@ -587,7 +587,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: postal_mail_applications
     label:
@@ -609,7 +609,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: other_applications
     label:
@@ -632,7 +632,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: e_registration
     label:
@@ -651,7 +651,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non (Ce point d’interaction s’applique au service, mais il n’est pas de
@@ -682,7 +682,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non (Ce point d’interaction s’applique au service, mais il n’est pas de
@@ -713,7 +713,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non (Ce point d’interaction s’applique au service, mais il n’est pas de
@@ -744,7 +744,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non (Ce point d’interaction s’applique au service, mais il n’est pas de
@@ -775,7 +775,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non (Ce point d’interaction s’applique au service, mais il n’est pas de
@@ -806,7 +806,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       N:
         fr: Non (Ce point d’interaction s’applique au service, mais il n’est pas de
@@ -834,7 +834,7 @@ resources:
         to provide feedback on their level of satisfaction with the service. Select
         all that apply.
     obligation: optional
-    datastore_type: _text
+    type: text array
     choices:
       eml:
         fr: Courriel
@@ -876,7 +876,7 @@ resources:
         to other fields, departments can create and publish an explanatory note on
         their website with a link to the GC Service Inventory dataset.
     obligation: optional
-    datastore_type: text
+    type: text
 
   - id: special_remarks_fr
     label:
@@ -893,7 +893,7 @@ resources:
         to other fields, departments can create and publish an explanatory note on
         their website with a link to the GC Service Inventory dataset.
     obligation: optional
-    datastore_type: text
+    type: text
 
   example_record:
     fiscal_yr: 2017-2018
@@ -962,7 +962,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       2013-2014: 2013-2014
       2014-2015: 2014-2015
@@ -984,7 +984,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_name_en
     label:
@@ -997,7 +997,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_name_fr
     label:
@@ -1010,7 +1010,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_std_id
     label:
@@ -1027,7 +1027,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_std_en
     label:
@@ -1043,7 +1043,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_std_fr
     label:
@@ -1059,7 +1059,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_std_url_en
     label:
@@ -1074,7 +1074,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_std_url_fr
     label:
@@ -1089,7 +1089,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: service_std_type
     label:
@@ -1104,7 +1104,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: _text
+    type: text array
     choices:
       acces:
         fr: Accès à l’information
@@ -1130,7 +1130,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: _text
+    type: text array
     choices:
       other_type:
         fr: Autre type de cible
@@ -1149,7 +1149,7 @@ resources:
       en: Identifies the decimal value between zero and one of the service standard
         target.
     obligation: optional
-    datastore_type: numeric
+    type: numeric
 
   - id: volume_meeting_target
     label:
@@ -1168,7 +1168,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: total_volume
     label:
@@ -1186,7 +1186,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: performance
     label:
@@ -1201,7 +1201,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: optional
-    datastore_type: text
+    type: text
 
   - id: gcss_tool_fiscal_yr
     label:
@@ -1221,7 +1221,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
     choices:
       2013-2014: 2013-2014
       2014-2015: 2014-2015
@@ -1239,7 +1239,7 @@ resources:
         appliquée
       en: Identifies which service channel the service standard applies to
     obligation: optional
-    datastore_type: _text
+    type: text array
     choices:
       eml:
         fr: Courriel
@@ -1274,7 +1274,7 @@ resources:
       fr: Commentaires en lien au mode de prestation de la norme de service
       en: Comments related to the service standard channel
     obligation: optional
-    datastore_type: text
+    type: text
 
   - id: standard_channel_comment_fr
     label:
@@ -1284,7 +1284,7 @@ resources:
       fr: Commentaires en lien au mode de prestation de la norme de service
       en: Comments related to the service standard channel
     obligation: optional
-    datastore_type: text
+    type: text
 
   - id: standard_comment_en
     label:
@@ -1294,7 +1294,7 @@ resources:
       fr: Commentaires en lien à la norme de service en general
       en: Comments related to the service standard in general
     obligation: optional
-    datastore_type: text
+    type: text
 
   - id: standard_comment_fr
     label:
@@ -1304,7 +1304,7 @@ resources:
       fr: Commentaires en lien à la norme de service en general
       en: Comments related to the service standard in general
     obligation: optional
-    datastore_type: text
+    type: text
 
   - id: realtime_result_url_en
     label:
@@ -1320,7 +1320,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: realtime_result_url_fr
     label:
@@ -1336,7 +1336,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: department_name_en
     label:
@@ -1349,7 +1349,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   - id: department_name_fr
     label:
@@ -1362,7 +1362,7 @@ resources:
       en: This field must not be empty
       fr: Cette zone ne doit pas être vide
     obligation: mandatory
-    datastore_type: text
+    type: text
 
   example_record:
     fiscal_yr: 2017-2018
