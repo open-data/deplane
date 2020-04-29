@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/deplane
+    docker:
+    - image: circleci/python:3.6.4
+    steps:
+    - checkout
+    - run:
+        command: |
+          pip install tests/requirements.txt
+          make compile-mo
+    - run:
+        command: |
+          pytest tests/test.py
+    - store_test_results:
+        path: test-results
+    - store_artifacts:
+        path: test-results
+        destination: tr1
