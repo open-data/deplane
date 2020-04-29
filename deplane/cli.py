@@ -1,8 +1,10 @@
 from pathlib import Path
 import gettext
 
+import yaml
 import click
 import requests
+from requests.exceptions import InvalidSchema, MissingSchema
 
 from deplane.publish import write_docx
 
@@ -24,5 +26,9 @@ def cli(lang, url, filename):
             languages=[lang],
         )
         trans.install()
-    geno = requests.get(url).json()
+    try:
+        geno = requests.get(url).json()
+    except (InvalidSchema, MissingSchema):
+        with open(url) as f:
+            geno = yaml.safe_load(f)
     write_docx(geno, filename, trans, lang)

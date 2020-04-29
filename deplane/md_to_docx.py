@@ -9,6 +9,8 @@ def insert_markdown(document, markdown):
     """
     Insert markdown into docx document, best effort conversion
     """
+    if not markdown:
+        return
     html = md(
         markdown,
         extensions=['tables'],
