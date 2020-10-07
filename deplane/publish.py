@@ -124,9 +124,15 @@ Options are:
 - Timestamp (YYYY-MM-DD hh:mm:ss)''')
         )
         trow(
-            _('Validation'),
-            _('''
-Describes the condition or conditions according to which a value shall be present.
+            _('Validation EN'),
+            _(
+'''Describes the condition or conditions according to which a value shall be present in English.
+Indicates what the system will accept in this field.'''),
+        )
+        trow(
+            _('Validation FR'),
+            _(
+'''Describes the condition or conditions according to which a value shall be present in French.
 Indicates what the system will accept in this field.'''),
         )
         trow(
@@ -167,7 +173,8 @@ Indicates what the system will accept in this field.'''),
                 mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
                 trow(_('Obligation'), trans.gettext(OBLIGATION[field.get('obligation')]))
                 mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
-                mrow(_('Validation'), field.get('validation', {}).get(lang, ''))
+                mrow(_('Validation EN'), field.get('validation', {}).get('en', ''))
+                mrow(_('Validation FR'), field.get('validation', {}).get('fr', ''))
                 eg = res['example_record'].get(field['id'], '')
                 if isinstance(eg, list):
                     eg = ','.join(eg)
