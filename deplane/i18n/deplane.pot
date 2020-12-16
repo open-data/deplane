@@ -69,7 +69,7 @@ msgid "Legend"
 msgstr ""
 
 #: deplane/publish.py:76
-msgid "The following sample table provides a description of each field you will see for all contract elements:"
+msgid "The following sample table provides a description of each field you will see for all elements:"
 msgstr ""
 
 #: deplane/publish.py:87 deplane/publish.py:168

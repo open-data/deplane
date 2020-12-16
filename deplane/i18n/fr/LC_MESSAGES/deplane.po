@@ -80,10 +80,10 @@ msgstr "Légende"
 #: deplane/publish.py:76
 msgid ""
 "The following sample table provides a description of each field you will see "
-"for all contract elements:"
+"for all elements:"
 msgstr ""
 "Le tableau qui suit décrit chaque zone que vous trouverez dans le document "
-"modèle pour tous les éléments d’un marché :"
+"modèle pour tous les éléments :"
 
 #: deplane/publish.py:87 deplane/publish.py:168
 msgid "Attribute"

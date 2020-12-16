@@ -60,14 +60,14 @@ def write_docx(schema, filename, trans, lang):
     for para in reversed(document.paragraphs[2:]):
         delete_paragraph(para)
 
-    document.add_heading(_('Overview'), 1)
-    document.sections[-1].right_margin = Cm(2.54)  # restore right margin
-    insert_markdown(document, _(
-        'The purpose of this document is to provide supplemental information that is '
-        'not provided in the *Centralized Contract Publishing System: Training Guide*. '
-        'It will provide information to users on data elements within the Quarterly '
-        'Contracts template.'
-    ))
+    #document.add_heading(_('Overview'), 1)
+    #document.sections[-1].right_margin = Cm(2.54)  # restore right margin
+    #insert_markdown(document, _(
+    #    'The purpose of this document is to provide supplemental information that is '
+    #    'not provided in the *Centralized Contract Publishing System: Training Guide*. '
+    #    'It will provide information to users on data elements within the Quarterly '
+    #    'Contracts template.'
+    #))
 
     if schema.get('front_matter'):
         insert_markdown(document, schema['front_matter'][lang])
@@ -75,7 +75,7 @@ def write_docx(schema, filename, trans, lang):
     document.add_heading(_('Legend'), 1)
     document.add_paragraph(_(
         'The following sample table provides a description of each field you will see '
-        'for all contract elements:'
+        'for all elements:'
     ))
 
     with build_table(
