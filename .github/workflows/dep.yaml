@@ -20,14 +20,65 @@ jobs:
           make compile-mo
           cd dep
           echo "Generating Data Element Profiles"
+          echo "Use of Administrative Aircraft"
+          deplane en https://open.canada.ca/data/recombinant-schema/adminaircraft.json adminaircraft-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/adminaircraft.json adminaircraft-fr.docx
+          echo "ATI Summaries"
+          deplane en https://open.canada.ca/data/recombinant-schema/ati.json ati-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/ati.json ati-fr.docx
+          echo "Briefing Note Titles and Numbers"
+          deplane en https://open.canada.ca/data/recombinant-schema/briefingt.json briefingt-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/briefingt.json briefingt-fr.docx
           echo "Consultations"
           deplane en https://open.canada.ca/data/recombinant-schema/consultations.json consultations-en.docx
           deplane fr https://open.canada.ca/data/recombinant-schema/consultations.json consultations-fr.docx
+          echo "Contracts over $10,000"
+          deplane en https://open.canada.ca/data/recombinant-schema/contracts.json contracts-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/contracts.json contracts-fr.docx
+          echo "Aggregated Contracts from -$10,000 to $10,000"
+          deplane en https://open.canada.ca/data/recombinant-schema/contractsa.json contractsa-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/contractsa.json contractsa-fr.docx
+          echo "Departmental Audit Committee"
+          deplane en https://open.canada.ca/data/recombinant-schema/dac.json dac-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/dac.json dac-fr.docx
+          echo "Experimentation Inventory"
+          deplane en https://open.canada.ca/data/recombinant-schema/experiment.json experiment-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/experiment.json experiment-fr.docx
+          echo "Grants and Contributions"
+          deplane en https://open.canada.ca/data/recombinant-schema/grants.json grants-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/grants.json grants-fr.docx
+          echo "Hospitality Expenses"
+          deplane en https://open.canada.ca/data/recombinant-schema/hospitalityq.json hospitalityq-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/hospitalityq.json hospitalityq-fr.docx
+          echo "Open Data Inventory"
+          deplane en https://open.canada.ca/data/recombinant-schema/inventory.json inventory-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/inventory.json inventory-fr.docx
+          echo "5th National Action Plan on Open Government Tracker"
+          deplane en https://open.canada.ca/data/recombinant-schema/nap5.json nap5-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/nap5.json nap5-fr.docx
+          echo "Question Period Notes"
+          deplane en https://open.canada.ca/data/recombinant-schema/qpnotes.json qpnotes-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/qpnotes.json qpnotes-fr.docx
+          echo "Position Reclassification"
+          deplane en https://open.canada.ca/data/recombinant-schema/reclassification.json reclassification-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/reclassification.json reclassification-fr.docx
+          echo "Service Inventory"
+          deplane en https://open.canada.ca/data/recombinant-schema/service.json service-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/service.json service-fr.docx
+          echo "Annual Travel, Hospitality and Conferences"
+          deplane en https://open.canada.ca/data/recombinant-schema/travela.json travela-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/travela.json travela-fr.docx
+          echo "Travel Expenses"
+          deplane en https://open.canada.ca/data/recombinant-schema/travelq.json travelq-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/travelq.json travelq-fr.docx
+          echo "Acts of Founded Wrongdoing"
+          deplane en https://open.canada.ca/data/recombinant-schema/wrongdoing.json wrongdoing-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/wrongdoing.json wrongdoing-fr.docx
           ls -la
           cd ..
           git status
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add .
+          git add dep
           git commit -m "Generating DEPs"
           git push -f origin master
