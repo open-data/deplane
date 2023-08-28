@@ -1,0 +1,33 @@
+name: Generate Data Element Profiles
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 5 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+  
+      - run: |
+          pip install jsonschema
+          pip install pyyaml
+          python setup.py develop
+          sudo apt install gettext
+          make compile-mo
+          cd dep
+          echo "Generating Data Element Profiles"
+          echo "Consultations"
+          deplane en https://open.canada.ca/data/recombinant-schema/consultations.json consultations-en.docx
+          deplane fr https://open.canada.ca/data/recombinant-schema/consultations.json consultations-fr.docx
+          ls -la
+          cd ..
+          git status
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Generating DEPs"
+          git push -f origin master
