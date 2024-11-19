@@ -19,6 +19,11 @@ OBLIGATION = {  # convert required to Obligation
     'optional': _('Optional'),
 }
 
+OCCURENCE = [
+    _('Single'),
+    _('Repeatable')
+]
+
 FORMAT_TYPE = {  # convert datastore_type to Format Type
     'bigint': _('Integer'),
     'int': _('Integer'),
@@ -32,6 +37,11 @@ FORMAT_TYPE = {  # convert datastore_type to Format Type
     'date': _('Date'),
     'timestamp': _('Timestamp'),
 }
+
+STRINGS = [
+    _('Describes the condition or conditions according to which a value shall be present in English. Indicates what the system will accept in this field.'),
+    _('Describes the condition or conditions according to which a value shall be present in French. Indicates what the system will accept in this field.')
+]
 
 
 def write_docx(schema, filename, trans, lang):
@@ -171,7 +181,9 @@ Indicates what the system will accept in this field.'''),
                 trow(_('ID'), field['id'])
                 mrow(_('Description EN'), field.get('description', {}).get('en', ''))
                 mrow(_('Description FR'), field.get('description', {}).get('fr', ''))
-                trow(_('Obligation'), trans.gettext(OBLIGATION[field.get('obligation')]))
+                mrow(_('Obligation EN'), field.get('obligation', {}).get('en', trans.gettext(OBLIGATION[field.get('obligation', 'optional')]) if not isinstance(field.get('obligation'), dict) and field.get('obligation') in OBLIGATION else ''))
+                mrow(_('Obligation FR'), field.get('obligation', {}).get('fr', trans.gettext(OBLIGATION[field.get('obligation', 'optional')]) if not isinstance(field.get('obligation'), dict) and field.get('obligation') in OBLIGATION else ''))
+                trow(_('Occurrence'), trans.gettext(field.get('occurrence', 'Single')))
                 mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
                 mrow(_('Validation EN'), field.get('validation', {}).get('en', ''))
                 mrow(_('Validation FR'), field.get('validation', {}).get('fr', ''))

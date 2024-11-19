@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) 2024 ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-10-07 08:47-0400\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-11-19 15:57-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: deplane/publish.py:17
 msgid "Mandatory"
@@ -27,117 +29,126 @@ msgstr "Obligatoire, conditionnel"
 msgid "Optional"
 msgstr "Facultatif"
 
-#: deplane/publish.py:23 deplane/publish.py:24 deplane/publish.py:25
-#: deplane/publish.py:26
+#: deplane/publish.py:23
+msgid "Single"
+msgstr "Une seule"
+
+#: deplane/publish.py:24
+msgid "Repeatable"
+msgstr "Répétable"
+
+#: deplane/publish.py:28 deplane/publish.py:29 deplane/publish.py:30
+#: deplane/publish.py:31
 msgid "Integer"
 msgstr ""
 
-#: deplane/publish.py:27 deplane/publish.py:28
+#: deplane/publish.py:32 deplane/publish.py:33
 msgid "Numeric"
 msgstr ""
 
-#: deplane/publish.py:29
+#: deplane/publish.py:34
 msgid "Text"
 msgstr ""
 
-#: deplane/publish.py:30 deplane/publish.py:31
+#: deplane/publish.py:35 deplane/publish.py:36
 msgid "Text Array"
 msgstr ""
 
-#: deplane/publish.py:32
+#: deplane/publish.py:37
 msgid "Date"
 msgstr ""
 
-#: deplane/publish.py:33
+#: deplane/publish.py:38
 msgid "Timestamp"
 msgstr ""
 
-#: deplane/publish.py:53 deplane/publish.py:57
+#: deplane/publish.py:42
+msgid ""
+"Describes the condition or conditions according to which a value shall be"
+" present in English. Indicates what the system will accept in this field."
+msgstr ""
+"Décrit dans quelle(s) condition(s) une valeur doit être présente en "
+"anglais. Indique le format requis des valeurs, s’il y a lieu, au niveau "
+"de chaque fichier."
+
+#: deplane/publish.py:43
+msgid ""
+"Describes the condition or conditions according to which a value shall be"
+" present in French. Indicates what the system will accept in this field."
+msgstr ""
+"Décrit dans quelle(s) condition(s) une valeur doit être présente en "
+"français. Indique le format requis des valeurs, s’il y a lieu, au niveau "
+"de chaque fichier."
+
+#: deplane/publish.py:63 deplane/publish.py:67
 msgid "Data Element Profile"
 msgstr "Profil des éléments de données"
 
-#: deplane/publish.py:63
-msgid "Overview"
-msgstr "Aperçu"
-
-#: deplane/publish.py:65
-msgid ""
-"The purpose of this document is to provide supplemental information that is "
-"not provided in the *Centralized Contract Publishing System: Training "
-"Guide*. It will provide information to users on data elements within the "
-"Quarterly Contracts template."
-msgstr ""
-"Le présent document vise à fournir des renseignements supplémentaires qui ne "
-"figurent pas dans la *Centralisation des divulgations proactives*.   Les "
-"utilisateurs qui ont des problèmes ou questions concernant des éléments "
-"particuliers du modèle de marché peuvent consulter le document des "
-"spécifications fonctionnelles."
-
-#: deplane/publish.py:75
+#: deplane/publish.py:85
 msgid "Legend"
 msgstr "Légende"
 
-#: deplane/publish.py:76
+#: deplane/publish.py:86
 msgid ""
-"The following sample table provides a description of each field you will see "
-"for all elements:"
+"The following sample table provides a description of each field you will "
+"see for all elements:"
 msgstr ""
-"Le tableau qui suit décrit chaque zone que vous trouverez dans le document "
-"modèle pour tous les éléments :"
+"Le tableau qui suit décrit chaque zone que vous trouverez dans le "
+"document modèle pour tous les éléments :"
 
-#: deplane/publish.py:87 deplane/publish.py:168
+#: deplane/publish.py:97 deplane/publish.py:178
 msgid "Attribute"
 msgstr "Attribut"
 
-#: deplane/publish.py:87 deplane/publish.py:168
+#: deplane/publish.py:97 deplane/publish.py:178
 msgid "Attribute Description"
 msgstr "Description de l’attribut"
 
-#: deplane/publish.py:89 deplane/publish.py:169
+#: deplane/publish.py:99 deplane/publish.py:179
 msgid "Field Name EN"
 msgstr "Nom de la zone EN"
 
-#: deplane/publish.py:90
+#: deplane/publish.py:100
 msgid ""
-"This text should correspond directly with the field name in your template in "
-"English"
+"This text should correspond directly with the field name in your template"
+" in English"
 msgstr ""
-"Ce texte doit correspondre directement au nom de la zone dans votre modèle "
-"en anglais."
+"Ce texte doit correspondre directement au nom de la zone dans votre "
+"modèle en anglais."
 
-#: deplane/publish.py:93 deplane/publish.py:170
+#: deplane/publish.py:103 deplane/publish.py:180
 msgid "Field Name FR"
 msgstr "Nom de la zone FR"
 
-#: deplane/publish.py:94
+#: deplane/publish.py:104
 msgid ""
-"This text should correspond directly with the field name in your template in "
-"French"
+"This text should correspond directly with the field name in your template"
+" in French"
 msgstr ""
-"Ce texte doit correspondre directement au nom de la zone dans votre modèle "
-"en français."
+"Ce texte doit correspondre directement au nom de la zone dans votre "
+"modèle en français."
 
-#: deplane/publish.py:97 deplane/publish.py:172
+#: deplane/publish.py:107 deplane/publish.py:182
 msgid "Description EN"
 msgstr "Description EN"
 
-#: deplane/publish.py:98
+#: deplane/publish.py:108
 msgid "This provides a brief description of the element in English"
 msgstr "Brève description de l’élément en anglais."
 
-#: deplane/publish.py:101 deplane/publish.py:173
+#: deplane/publish.py:111 deplane/publish.py:183
 msgid "Description FR"
 msgstr "Description FR"
 
-#: deplane/publish.py:102
+#: deplane/publish.py:112
 msgid "This provides a brief description of the element in French"
 msgstr "Brève description de l’élément en français."
 
-#: deplane/publish.py:105 deplane/publish.py:174
+#: deplane/publish.py:115
 msgid "Obligation"
 msgstr "Obligation"
 
-#: deplane/publish.py:106
+#: deplane/publish.py:116
 msgid ""
 "\n"
 "Indicates whether the element is required to always or sometimes be "
@@ -157,11 +168,11 @@ msgstr ""
 "- Obligatoire, conditionnel\n"
 "- Facultatif"
 
-#: deplane/publish.py:115 deplane/publish.py:175
+#: deplane/publish.py:125 deplane/publish.py:187
 msgid "Format Type"
 msgstr "Type de format"
 
-#: deplane/publish.py:116
+#: deplane/publish.py:126
 msgid ""
 "\n"
 "Options are:\n"
@@ -174,45 +185,47 @@ msgid ""
 "- Timestamp (YYYY-MM-DD hh:mm:ss)"
 msgstr ""
 
-#: deplane/publish.py:127 deplane/publish.py:176
+#: deplane/publish.py:137 deplane/publish.py:188
 msgid "Validation EN"
 msgstr "Validation EN"
 
-#: deplane/publish.py:128
+#: deplane/publish.py:138
 msgid ""
-"Describes the condition or conditions according to which a value shall be "
-"present in English.\n"
+"Describes the condition or conditions according to which a value shall be"
+" present in English.\n"
 "Indicates what the system will accept in this field."
 msgstr ""
-"Décrit dans quelle(s) condition(s) une valeur doit être présente en anglais. Indique le "
-"format requis des valeurs, s’il y a lieu, au niveau de chaque fichier."
+"Décrit dans quelle(s) condition(s) une valeur doit être présente en "
+"anglais. Indique le format requis des valeurs, s’il y a lieu, au niveau "
+"de chaque fichier."
 
-#: deplane/publish.py:133 deplane/publish.py:177
+#: deplane/publish.py:143 deplane/publish.py:189
 msgid "Validation FR"
-msgstr "Validation"
+msgstr "Validation FR"
 
-#: deplane/publish.py:134
+#: deplane/publish.py:144
 msgid ""
-"Describes the condition or conditions according to which a value shall be "
-"present in French.\n"
+"Describes the condition or conditions according to which a value shall be"
+" present in French.\n"
 "Indicates what the system will accept in this field."
 msgstr ""
-"Décrit dans quelle(s) condition(s) une valeur doit être présente en anglais. Indique le "
-"format requis des valeurs, s’il y a lieu, au niveau de chaque fichier."
+"Décrit dans quelle(s) condition(s) une valeur doit être présente en "
+"anglais. Indique le format requis des valeurs, s’il y a lieu, au niveau "
+"de chaque fichier."
 
-#: deplane/publish.py:139 deplane/publish.py:181
+#: deplane/publish.py:149 deplane/publish.py:195
 msgid "Example Value"
 msgstr "Exemple de valeur"
 
-#: deplane/publish.py:140
+#: deplane/publish.py:150
 msgid ""
 "Provide one or more real examples of the values that may appear, e.g. "
 "“CODE1” or “Family Services Reform Program”"
 msgstr ""
-"Donnez un ou plusieurs exemples réels des valeurs qui peuvent apparaître, p. "
-"ex. « CODE1 » ou « Programme de réforme des services à la famille »."
+"Donnez un ou plusieurs exemples réels des valeurs qui peuvent apparaître,"
+" p. ex. « CODE1 » ou « Programme de réforme des services à la famille »."
 
-#: deplane/publish.py:146 deplane/publish.py:184
+#: deplane/publish.py:156 deplane/publish.py:198
 msgid ""
 "\n"
 "Controlled List Values:"
@@ -220,48 +233,93 @@ msgstr ""
 "\n"
 "Valeurs de la liste contrôlée :"
 
-#: deplane/publish.py:151 deplane/publish.py:189
+#: deplane/publish.py:161 deplane/publish.py:203
 msgid "Code"
 msgstr "Code"
 
-#: deplane/publish.py:151 deplane/publish.py:189
+#: deplane/publish.py:161 deplane/publish.py:203
 msgid "English"
 msgstr "Anglais"
 
-#: deplane/publish.py:151 deplane/publish.py:189
+#: deplane/publish.py:161 deplane/publish.py:203
 msgid "French"
 msgstr "Français"
 
-#: deplane/publish.py:152
+#: deplane/publish.py:162
 msgid "English Description 1"
 msgstr "Description en anglais 1"
 
-#: deplane/publish.py:152
+#: deplane/publish.py:162
 msgid "French Description 1"
 msgstr "Description en français 1"
 
-#: deplane/publish.py:153
+#: deplane/publish.py:163
 msgid "English Description 2"
 msgstr "Description en anglais 2"
 
-#: deplane/publish.py:153
+#: deplane/publish.py:163
 msgid "French Description 2"
 msgstr "Description en français 2"
 
-#: deplane/publish.py:171
+#: deplane/publish.py:181
 msgid "ID"
 msgstr ""
 
+#: deplane/publish.py:184
+msgid "Obligation EN"
+msgstr "Obligation EN"
+
+#: deplane/publish.py:185
+msgid "Obligation FR"
+msgstr "Obligation FR"
+
+#: deplane/publish.py:186
+msgid "Occurrence"
+msgstr "Occurrence"
+
+#: deplane/publish.py:191
+msgid "Maximum Length"
+msgstr "Longueur maximale"
+
+#: deplane/publish.py:191
+msgid " characters"
+msgstr " caractères"
+
 #~ msgid ""
 #~ "\n"
-#~ "Describes the condition or conditions according to which a value shall be "
-#~ "present.\n"
+#~ "Describes the condition or conditions "
+#~ "according to which a value shall "
+#~ "be present.\n"
 #~ "Indicates what the system will accept in this field in English."
 #~ msgstr ""
 #~ "\n"
-#~ "Décrit dans quelle(s) condition(s) une valeur doit être présente. Indique "
-#~ "le format requis des valeurs, s’il y a lieu, au niveau de chaque fichier "
-#~ "en anglais."
+#~ "Décrit dans quelle(s) condition(s) une "
+#~ "valeur doit être présente. Indique le"
+#~ " format requis des valeurs, s’il y"
+#~ " a lieu, au niveau de chaque "
+#~ "fichier en anglais."
 
 #~ msgid "Validation"
 #~ msgstr "Validation"
+
+#~ msgid "Overview"
+#~ msgstr "Aperçu"
+
+#~ msgid ""
+#~ "The purpose of this document is to"
+#~ " provide supplemental information that is"
+#~ " not provided in the *Centralized "
+#~ "Contract Publishing System: Training Guide*."
+#~ " It will provide information to users"
+#~ " on data elements within the "
+#~ "Quarterly Contracts template."
+#~ msgstr ""
+#~ "Le présent document vise à fournir "
+#~ "des renseignements supplémentaires qui ne "
+#~ "figurent pas dans la *Centralisation des"
+#~ " divulgations proactives*.   Les utilisateurs "
+#~ "qui ont des problèmes ou questions "
+#~ "concernant des éléments particuliers du "
+#~ "modèle de marché peuvent consulter le"
+#~ " document des spécifications fonctionnelles."
+

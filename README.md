@@ -11,6 +11,23 @@ schema. A Data Element Profile docx file is easier for users to
 understand, share and edit than the ckanext-recombinant JSON/YAML
 schema and choice files that it represents.
 
+Installation
+------------
+
+Install `deplane` and its dependencies into a Python virtual environment:
+
+```
+python3 -m venv venv
+./venv/bin/activate
+python setup.py develop
+```
+
+Confirm that `deplane` is installed in the Python virtual environment:
+
+```
+which deplane
+```
+
 Usage
 -----
 
