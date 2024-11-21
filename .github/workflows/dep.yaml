@@ -2,8 +2,6 @@ name: Generate Data Element Profiles
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '0 5 * * *'
 
 jobs:
   build:
@@ -17,7 +15,7 @@ jobs:
           pip install pyyaml
           python setup.py develop
           sudo apt install gettext
-          make compile-mo
+          python setup.py compile_catalog
           cd dep
           echo "Generating Data Element Profiles"
           echo "Use of Administrative Aircraft"
