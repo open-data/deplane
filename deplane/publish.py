@@ -187,6 +187,8 @@ Indicates what the system will accept in this field.'''),
                 mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
                 mrow(_('Validation EN'), field.get('validation', {}).get('en', ''))
                 mrow(_('Validation FR'), field.get('validation', {}).get('fr', ''))
+                if field.get('character_limit', field.get('max_chars')):
+                    trow(_('Character Limit'), str(field.get('character_limit', field.get('max_chars'))))
                 eg = res['example_record'].get(field['id'], '')
                 if isinstance(eg, list):
                     eg = ','.join(eg)

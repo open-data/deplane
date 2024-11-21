@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-19 15:57-0500\n"
+"POT-Creation-Date: 2024-11-21 16:14-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -278,12 +278,8 @@ msgid "Occurrence"
 msgstr "Occurrence"
 
 #: deplane/publish.py:191
-msgid "Maximum Length"
-msgstr "Longueur maximale"
-
-#: deplane/publish.py:191
-msgid " characters"
-msgstr " caractères"
+msgid "Character Limit"
+msgstr "Limite de caractères"
 
 #~ msgid ""
 #~ "\n"
@@ -322,4 +318,7 @@ msgstr " caractères"
 #~ "concernant des éléments particuliers du "
 #~ "modèle de marché peuvent consulter le"
 #~ " document des spécifications fonctionnelles."
+
+#~ msgid "Maximum Length"
+#~ msgstr "Longueur maximale"
 
