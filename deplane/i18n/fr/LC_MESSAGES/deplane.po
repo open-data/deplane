@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-21 16:14-0500\n"
+"POT-Creation-Date: 2025-01-22 10:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -185,7 +185,7 @@ msgid ""
 "- Timestamp (YYYY-MM-DD hh:mm:ss)"
 msgstr ""
 
-#: deplane/publish.py:137 deplane/publish.py:188
+#: deplane/publish.py:137 deplane/publish.py:190
 msgid "Validation EN"
 msgstr "Validation EN"
 
@@ -199,7 +199,7 @@ msgstr ""
 "anglais. Indique le format requis des valeurs, s’il y a lieu, au niveau "
 "de chaque fichier."
 
-#: deplane/publish.py:143 deplane/publish.py:189
+#: deplane/publish.py:143 deplane/publish.py:191
 msgid "Validation FR"
 msgstr "Validation FR"
 
@@ -213,7 +213,7 @@ msgstr ""
 "anglais. Indique le format requis des valeurs, s’il y a lieu, au niveau "
 "de chaque fichier."
 
-#: deplane/publish.py:149 deplane/publish.py:195
+#: deplane/publish.py:149 deplane/publish.py:197
 msgid "Example Value"
 msgstr "Exemple de valeur"
 
@@ -225,7 +225,7 @@ msgstr ""
 "Donnez un ou plusieurs exemples réels des valeurs qui peuvent apparaître,"
 " p. ex. « CODE1 » ou « Programme de réforme des services à la famille »."
 
-#: deplane/publish.py:156 deplane/publish.py:198
+#: deplane/publish.py:156 deplane/publish.py:200
 msgid ""
 "\n"
 "Controlled List Values:"
@@ -233,15 +233,15 @@ msgstr ""
 "\n"
 "Valeurs de la liste contrôlée :"
 
-#: deplane/publish.py:161 deplane/publish.py:203
+#: deplane/publish.py:161 deplane/publish.py:205
 msgid "Code"
 msgstr "Code"
 
-#: deplane/publish.py:161 deplane/publish.py:203
+#: deplane/publish.py:161 deplane/publish.py:205
 msgid "English"
 msgstr "Anglais"
 
-#: deplane/publish.py:161 deplane/publish.py:203
+#: deplane/publish.py:161 deplane/publish.py:205
 msgid "French"
 msgstr "Français"
 
@@ -277,7 +277,15 @@ msgstr "Obligation FR"
 msgid "Occurrence"
 msgstr "Occurrence"
 
-#: deplane/publish.py:191
+#: deplane/publish.py:188
+msgid "Format Type Description EN"
+msgstr "Description du type de format EN"
+
+#: deplane/publish.py:189
+msgid "Format Type Description FR"
+msgstr "Description du type de format FR"
+
+#: deplane/publish.py:193
 msgid "Character Limit"
 msgstr "Limite de caractères"
 

@@ -185,8 +185,8 @@ Indicates what the system will accept in this field.'''),
                 mrow(_('Obligation FR'), field.get('obligation', {}).get('fr', trans.gettext(OBLIGATION[field.get('obligation', 'optional')]) if not isinstance(field.get('obligation'), dict) and field.get('obligation') in OBLIGATION else ''))
                 trow(_('Occurrence'), trans.gettext(field.get('occurrence', 'Single')))
                 mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
-                mrow(_('Validation EN'), field.get('validation', {}).get('en', ''))
-                mrow(_('Validation FR'), field.get('validation', {}).get('fr', ''))
+                trow(_('Validation EN'), field.get('validation', {}).get('en', ''))
+                trow(_('Validation FR'), field.get('validation', {}).get('fr', ''))
                 if field.get('character_limit', field.get('max_chars')):
                     trow(_('Character Limit'), str(field.get('character_limit', field.get('max_chars'))))
                 eg = res['example_record'].get(field['id'], '')

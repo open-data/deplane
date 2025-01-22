@@ -1,14 +1,14 @@
 # Translations template for deplane.
-# Copyright (C) 2024 ORGANIZATION
+# Copyright (C) 2025 ORGANIZATION
 # This file is distributed under the same license as the deplane project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: deplane 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-21 16:14-0500\n"
+"POT-Creation-Date: 2025-01-22 10:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,7 +164,7 @@ msgid ""
 "- Timestamp (YYYY-MM-DD hh:mm:ss)"
 msgstr ""
 
-#: deplane/publish.py:137 deplane/publish.py:188
+#: deplane/publish.py:137 deplane/publish.py:190
 msgid "Validation EN"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgid ""
 "Indicates what the system will accept in this field."
 msgstr ""
 
-#: deplane/publish.py:143 deplane/publish.py:189
+#: deplane/publish.py:143 deplane/publish.py:191
 msgid "Validation FR"
 msgstr ""
 
@@ -186,7 +186,7 @@ msgid ""
 "Indicates what the system will accept in this field."
 msgstr ""
 
-#: deplane/publish.py:149 deplane/publish.py:195
+#: deplane/publish.py:149 deplane/publish.py:197
 msgid "Example Value"
 msgstr ""
 
@@ -196,21 +196,21 @@ msgid ""
 " or “Family Services Reform Program”"
 msgstr ""
 
-#: deplane/publish.py:156 deplane/publish.py:198
+#: deplane/publish.py:156 deplane/publish.py:200
 msgid ""
 "\n"
 "Controlled List Values:"
 msgstr ""
 
-#: deplane/publish.py:161 deplane/publish.py:203
+#: deplane/publish.py:161 deplane/publish.py:205
 msgid "Code"
 msgstr ""
 
-#: deplane/publish.py:161 deplane/publish.py:203
+#: deplane/publish.py:161 deplane/publish.py:205
 msgid "English"
 msgstr ""
 
-#: deplane/publish.py:161 deplane/publish.py:203
+#: deplane/publish.py:161 deplane/publish.py:205
 msgid "French"
 msgstr ""
 
@@ -246,7 +246,15 @@ msgstr ""
 msgid "Occurrence"
 msgstr ""
 
-#: deplane/publish.py:191
+#: deplane/publish.py:188
+msgid "Format Type Description EN"
+msgstr ""
+
+#: deplane/publish.py:189
+msgid "Format Type Description FR"
+msgstr ""
+
+#: deplane/publish.py:193
 msgid "Character Limit"
 msgstr ""
 
