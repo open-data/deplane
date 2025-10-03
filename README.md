@@ -3,8 +3,6 @@
 deplane
 =======
 
-[![CircleCI](https://circleci.com/gh/open-data/deplane.svg?style=svg)](https://circleci.com/gh/open-data/deplane)
-
 Generate a Data Element Profile docx file based on a
 [ckanext-recombinant](https://github.com/open-data/ckanext-recombinant)
 schema. A Data Element Profile docx file is easier for users to
