@@ -29,12 +29,14 @@ setup(
         'lxml',
         'markdown',
         'pyyaml',
-        'babel'
+        'babel',
+        'ruamel.yaml'
     ],
     python_requires='>3.6',
     entry_points='''
         [console_scripts]
         deplane=deplane.cli:cli
+        replane=replane.cli:cli
     ''',
     cmdclass = {
         'compile_catalog': babel.compile_catalog,
