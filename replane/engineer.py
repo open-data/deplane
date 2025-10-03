@@ -61,6 +61,11 @@ def read_docx(document):
 
         dep_fields.append(dep_field)
 
+    # FIXME: we assume that the 2 resources would not share the same datastore_ids
+    #        in most cases they do, like month and year, or service_id, etc.
+    #        we have to figure out how to differenciate between Resource 1 and
+    #        Resource 2 etc etc from the DEP
+
     dep_data_dict = {}
     for index, dep_field in enumerate(dep_fields):
         if 'ID' not in dep_field:

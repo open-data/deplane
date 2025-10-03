@@ -48,10 +48,10 @@ Reverse engineers the deplane process, transforming a Data Element Profile docx 
 Replane handles text changes to:
 - Field Names
 - Descriptions
-- Obligations
-- Occurrences
-- Validations
-- Character Limits
+- Obligations (semantic descriptions)
+- Occurrences (semantic descriptions)
+- Validations (semantic descriptions)
+- Character Limits (semantic descriptions)
 
 It will handle any changes to choice lists, raising an exception if a choice value is removed/modified as this would entail a data migration. For fields which use `choices_file`, the respective YAML file would be updated.
 
@@ -61,7 +61,8 @@ The tool attempts to preserve any formatting and inline comments.
 
 It does *NOT* update:
 - any triggers
-- example values (TBD)
+- any Excel formulae
+- any example values (TBD)
 
 Usage
 -----
