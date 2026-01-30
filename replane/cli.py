@@ -30,8 +30,7 @@ def cli_impl(yaml_file, docx_file, max_line=130):
         for field in resource['fields']:
             if field['datastore_id'] in dep_dict:
                 comments = dep_dict[field['datastore_id']].pop('YAML_COMMENTS', None)
-                # TODO: handle example values
-                
+                example = dep_dict[field['datastore_id']].pop('example', None)
                 # TODO: check to make sure no choice values were removed/modified.
                 #       raise an Exception if they were, as that would mean a data migration.
                 if 'choices_file' in field and 'choices' in dep_dict[field['datastore_id']]:
@@ -44,6 +43,8 @@ def cli_impl(yaml_file, docx_file, max_line=130):
                         field[_directive] = dep_dict[field['datastore_id']][_directive]
                 if comments:
                     field.yaml_set_start_comment(comment=comments, indent=2)
+                if example and example != resource['examples']['record'][field['datastore_id']]:
+                    resource['examples']['record'][field['datastore_id']] = example
                 if 'form_attrs' in field and 'maxlength' in field['form_attrs'] and 'max_chars' in dep_dict[field['datastore_id']]:
                     field['form_attrs']['maxlength'] = dep_dict[field['datastore_id']]['max_chars']
     with open(yaml_file, 'w') as f:

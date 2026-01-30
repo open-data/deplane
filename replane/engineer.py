@@ -76,7 +76,8 @@ def read_docx(document):
             dep_data_dict[dep_field['ID']] = {}
         if 'YAML_COMMENTS' in dep_field:
             dep_data_dict[dep_field['ID']] = {'YAML_COMMENTS': dep_field['YAML_COMMENTS']}
-        # TODO: handle example values
+        if dep_field.get('Example Value'):
+            dep_data_dict[dep_field['ID']]['example'] = dep_field['Example Value']
         if dep_field.get('Field Name EN') and dep_field.get('Field Name FR'):
             dep_data_dict[dep_field['ID']]['label'] = {
                 'en': dep_field['Field Name EN'],
