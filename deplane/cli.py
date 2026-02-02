@@ -43,7 +43,7 @@ def cli_impl(lang, url, filename, github):
         print('Fetching geno for %s from Github remote: %s' % (t, r))
         f = requests.get(r).content
         geno = yaml.safe_load(f)
-        write_docx(geno, filename, trans, lang, french_trans)
+        write_docx(geno, filename, trans, lang, french_trans, remote_choices=f'https://raw.githubusercontent.com/open-data/ckanext-canada/refs/heads/{github}/ckanext/canada/tables')
         return
     try:
         geno = requests.get(url).json()

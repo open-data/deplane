@@ -1,6 +1,8 @@
 from pathlib import Path
 from contextlib import contextmanager
 import re
+import requests
+import yaml
 
 # noinspection PyPackageRequirements
 from docx import Document
@@ -26,7 +28,11 @@ OBLIGATION = {  # convert required to Obligation
 
 OCCURENCE = [
     _('Single'),
-    _('Repeatable')
+    _('Repeatable'),
+]
+
+VALIDATION = [
+    _('This field must not be empty'),
 ]
 
 FORMAT_TYPE = {  # convert datastore_type to Format Type
@@ -45,13 +51,13 @@ FORMAT_TYPE = {  # convert datastore_type to Format Type
 
 STRINGS = [
     _('Describes the condition or conditions according to which a value shall be present in English. Indicates what the system will accept in this field.'),
-    _('Describes the condition or conditions according to which a value shall be present in French. Indicates what the system will accept in this field.')
+    _('Describes the condition or conditions according to which a value shall be present in French. Indicates what the system will accept in this field.'),
 ]
 
 NAP_MATCH = re.compile(r'^nap(\d)*$')
 
 
-def write_docx(schema, filename, trans, lang, french_trans):
+def write_docx(schema, filename, trans, lang, french_trans, remote_choices = None):
     """
     :param schema: recombinant-schema json dict
     :param filename: output docx filename to create
@@ -244,8 +250,23 @@ Indicates what the system will accept in this field.'''),
 
                 mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
 
-                trow(_('Validation EN'), field.get('validation', {}).get('en', ''))
-                trow(_('Validation FR'), field.get('validation', {}).get('fr', ''))
+                # There are some basic string validations instead of en/fr dicts
+                validation_en = field.get('validation', None)
+                if isinstance(validation_en, dict):
+                    validation_en = validation_en.get('en', '')
+                elif isinstance(validation_en, str) and validation_en in VALIDATION:
+                    validation_en = trans.gettext(validation_en)
+                elif isinstance(validation_en, str):
+                    validation_en = validation_en
+                validation_fr = field.get('validation', None)
+                if isinstance(validation_fr, dict):
+                    validation_fr = validation_fr.get('fr', '')
+                elif isinstance(validation_fr, str) and validation_fr in VALIDATION:
+                    validation_fr = french_trans.gettext(validation_fr)
+                elif isinstance(validation_fr, str):
+                    validation_fr = validation_fr
+                trow(_('Validation EN'), validation_en)
+                trow(_('Validation FR'), validation_fr)
 
                 if field.get('character_limit', field.get('max_chars')):
                     trow(_('Character Limit'), str(field.get('character_limit', field.get('max_chars'))))
@@ -256,19 +277,24 @@ Indicates what the system will accept in this field.'''),
                     if isinstance(eg, list):
                         eg = ','.join(eg)
                     trow(_('Example Value'), str(eg))
-
-            # TODO: choices_file
-            # if 'choices_file' in field:
-                
-
-            if 'choices' in field:
+                    
+            fchoices = field.get('choices')
+            if 'choices_file' in field:
+                cf = remote_choices + '/' + field['choices_file']
+                rf = requests.get(cf)
+                if cf.endswith('.json'):
+                    fchoices = rf.json()
+                elif cf.endswith('.yaml') or cf.endswith('.yml'):
+                    fchoices = yaml.safe_load(rf.content)
+                print('Fetching choices for %s from Github remote: %s' % (fid, cf))
+            if fchoices:
                 document.add_paragraph(_('\nControlled List Values:'))
                 with build_table(
                         document,
                         [Cm(3.69), Cm(6.4), Cm(6.4)],
                         top_color='d9d9d9') as (trow, mrow, ttable):
                     trow(_('Code'), _('English'), _('French'))
-                    for c, v in field['choices'].items():
+                    for c, v in fchoices.items():
                         if isinstance(v, dict):
                             trow(c, v.get('en', ''), v.get('fr', ''))
                         else:
