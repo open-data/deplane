@@ -22,6 +22,8 @@ def cli_impl(yaml_file, docx_file, max_line=130):
     _yaml = YAML()
     _yaml.preserve_quotes = True
     _yaml.width = max_line
+    # TODO: this assumes that we already have a geno with resources in it.
+    #       we need to be able to create a blank YAML
     with open(yaml_file) as f:
         geno = _yaml.load(f)
     document = Document(docx_file)

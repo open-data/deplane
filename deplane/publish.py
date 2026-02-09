@@ -188,6 +188,9 @@ Indicates what the system will accept in this field.'''),
 
         rname = res.get('resource_name', '')
         is_national_action_plan = NAP_MATCH.match(rname) is not None
+        nap_version = None
+        if is_national_action_plan:
+            nap_version = int(rname.replace('nap', ''))
 
         for fnum, field in enumerate(res['fields'], 1):
             typ = field.get('type', field.get('datastore_type'))
@@ -251,14 +254,14 @@ Indicates what the system will accept in this field.'''),
                 mrow(_('Format Type'), trans.gettext(FORMAT_TYPE[typ]))
 
                 # There are some basic string validations instead of en/fr dicts
-                validation_en = field.get('validation', None)
+                validation_en = field.get('validation', '')
                 if isinstance(validation_en, dict):
                     validation_en = validation_en.get('en', '')
                 elif isinstance(validation_en, str) and validation_en in VALIDATION:
                     validation_en = trans.gettext(validation_en)
                 elif isinstance(validation_en, str):
                     validation_en = validation_en
-                validation_fr = field.get('validation', None)
+                validation_fr = field.get('validation', '')
                 if isinstance(validation_fr, dict):
                     validation_fr = validation_fr.get('fr', '')
                 elif isinstance(validation_fr, str) and validation_fr in VALIDATION:
@@ -315,10 +318,11 @@ Indicates what the system will accept in this field.'''),
                                 cells[0].text = _('Extras for: %s') % c
                                 cells[1].text = _('Extra Value')
 
-                                cells = innerT.add_row().cells
-                                cells[0].text = _('Due Date')
-                                default = 'TODO - supply value (must be one of reporting_period values)'
-                                cells[1].text = v.get('due_date') or default
+                                if nap_version == 5:
+                                    cells = innerT.add_row().cells
+                                    cells[0].text = _('Due Date')
+                                    default = 'TODO - supply value (must be one of reporting_period values)'
+                                    cells[1].text = v.get('due_date') or default
 
                                 cells = innerT.add_row().cells
                                 cells[0].text = _('Deadline (English)')
@@ -333,12 +337,18 @@ Indicates what the system will accept in this field.'''),
                                 cells = innerT.add_row().cells
                                 cells[0].text = _('Lead Department')
                                 default = 'TODO - supply value (must be organization abbreviation found here: https://open.canada.ca/data/en/api/action/organization_list)'
-                                cells[1].text = v.get('lead_dept') or default
+                                lead = v.get('lead_dept')
+                                if not lead:
+                                    lead = default
+                                elif isinstance(lead, list):
+                                    lead = ','.join(lead)
+                                cells[1].text = lead
 
-                                cells = innerT.add_row().cells
-                                cells[0].text = _('Summit for Democracy')
-                                default = 'TODO - supply value (must be "true" or "false")'
-                                cells[1].text = v.get('s4d') or default
+                                if nap_version == 5:
+                                    cells = innerT.add_row().cells
+                                    cells[0].text = _('Summit for Democracy')
+                                    default = 'TODO - supply value (must be "true" or "false")'
+                                    cells[1].text = v.get('s4d') or default
                         # :END: Special stuff for National Action Plans :END:
 
             document.add_paragraph('\n\n')
