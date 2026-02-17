@@ -203,7 +203,8 @@ Indicates what the system will accept in this field.'''),
             if fid == 'owner_org' or fid == 'owner_org_title':
                 continue
 
-            document.add_heading(f'{rnum}-{fnum} {field["label"][lang]}\n', 2)
+            flabel = field['label'] if isinstance(field['label'], str) else field['label'][lang]
+            document.add_heading(f'{rnum}-{fnum} {flabel}\n', 2)
 
             with build_table(
                     document,
@@ -213,8 +214,12 @@ Indicates what the system will accept in this field.'''),
                 
                 trow(_('Attribute'), _('Attribute Description'))
 
-                trow(_('Field Name EN'), field['label']['en'])
-                trow(_('Field Name FR'), field['label']['fr'])
+                flabel_en = field['label'] if isinstance(field['label'], str) else field['label']['en']
+                flabel_fr = field['label'] if isinstance(field['label'], str) else field['label']['fr']
+                if flabel_fr == flabel_en:
+                    flabel_fr = ''
+                trow(_('Field Name EN'), flabel_en)
+                trow(_('Field Name FR'), flabel_fr)
 
                 trow(_('ID'), fid)
 
